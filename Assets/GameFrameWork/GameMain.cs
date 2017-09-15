@@ -2,18 +2,39 @@
 using System.Collections.Generic;
 using UnityEngine;
 using GE;
+using GFW;
 
-public class GameMain : MonoBehaviour {
+public class GameMain : MonoBehaviour 
+{
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
 		Debuger.EnableLog = true;
-		ModuleManager.Instance.CreateModule ("login");
-		ModuleManager.Instance.ShowModule ("login");
+
+
+		InitServices ();
+		InitBusiness ();
+
+		ModuleManager.Instance.ShowModule (ModuleDef.LoadingModule);
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+	{
+		
+	}
+
+	private void InitServices()
+	{
+		ModuleManager.Instance.Init ("GFW");
+	}
+
+	private void InitBusiness()
+	{
+		ModuleManager.Instance.CreateModule (ModuleDef.LoadingModule);
+		ModuleManager.Instance.CreateModule (ModuleDef.HomeModule);
+		ModuleManager.Instance.CreateModule (ModuleDef.SelectLevelModule);
 		
 	}
 }

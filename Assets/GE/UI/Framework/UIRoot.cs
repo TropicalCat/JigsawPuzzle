@@ -23,8 +23,7 @@ namespace GE
             {
                 return obj.GetComponent<T>();
             }
-
-
+				
             return null;
         }
 
@@ -40,7 +39,6 @@ namespace GE
             if (obj != null)
             {
                 return obj.GetComponent<T>();
-
             }
 
             return null;
@@ -57,7 +55,7 @@ namespace GE
             GameObject root = FindUIRoot();
             if (root != null)
             {
-                obj = root.transform.FindChild(name);
+                obj = root.transform.Find(name);
             }
 
             if (obj != null)
@@ -95,8 +93,7 @@ namespace GE
             {
                 return;
             }
-
-            
+				
             child.transform.SetParent(root.transform, false);
             return;
         }

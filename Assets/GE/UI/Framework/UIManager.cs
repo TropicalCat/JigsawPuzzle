@@ -10,7 +10,7 @@ namespace GE
         public const string LOG_TAG = "UIManager";
 
         public static string MainScene = "Main";
-        public static string MainPage = "UIMainPage";
+        public static string MainPage = "Home";
 
         
         class UIPageTrack
@@ -164,7 +164,7 @@ namespace GE
         /// </summary>
         public void GoBackPage()
         {
-            Debuger.Log(LOG_TAG, "GoBackPage()");
+            //Debuger.Log(LOG_TAG, "GoBackPage()");
             if (m_pageTrackStack.Count > 0)
             {
                 var track = m_pageTrackStack.Pop();
