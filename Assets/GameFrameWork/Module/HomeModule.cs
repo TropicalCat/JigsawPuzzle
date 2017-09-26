@@ -15,8 +15,6 @@ namespace GFW
 			//UIManager.Instance.OpenPage(UIDef.UIHome);
 		}
 
-
-
 		public void OpenModule(string name, object arg)
 		{
 			switch (name)

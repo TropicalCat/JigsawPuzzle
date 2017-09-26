@@ -98,5 +98,16 @@ namespace GE
             return;
         }
 
+		public static void RemoveChild(UIPanel child)
+		{
+			GameObject root = FindUIRoot();
+			if (root == null || child == null)
+			{
+				return;
+			}
+
+			root.transform.DetachChildren (child);
+		}
+
     }
 }

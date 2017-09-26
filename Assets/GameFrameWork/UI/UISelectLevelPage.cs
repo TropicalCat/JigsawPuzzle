@@ -13,35 +13,45 @@ namespace GFW
 		protected override void OnOpen(object arg = null)
 		{
 			base.OnOpen (arg);
+			initLevel ();
+		}
 
+		private void initLevel()
+		{
 			for(int i = 0; i < levelItems.Length; i++)
 			{
+				int level = i + 1;
 				Image image = levelItems [i].GetComponent<Image> ();
-				image.sprite = Resources.Load("Texture/Piece/illustration/Illustration"+(i+1), typeof(Sprite)) as Sprite;
+				image.sprite = Resources.Load("Texture/Piece/illustration/Illustration"+level, typeof(Sprite)) as Sprite;
 
-				Button btn = levelItems [i].GetComponent<Button> ();
-
-
-				btn.onClick.AddListener( 
+				Button btnLevel = levelItems [i].GetComponent<Button> ();
+				btnLevel.name = "" + level;
+				btnLevel.onClick.AddListener( 
 					delegate() 
 					{  
-						this.OnClick(levelItems [i]);
+						this.OnLevelClick(btnLevel.gameObject);
 					});  
+			}
+		}
+
+		protected override void OnClose(object arg = null)
+		{
+			for(int i = 0; i < levelItems.Length; i++)
+			{
+				Button btnLevel = levelItems [i].GetComponent<Button> ();
+				btnLevel.onClick.RemoveAllListeners ();
 			}
 
 		}
 
-		private void OnClick(GameObject obj)
+		private void OnLevelClick(GameObject gameObject)
 		{
-
-			//int 
-			string name = obj.name;
-	
+			var module = ModuleManager.Instance.GetModule(ModuleDef.SelectLevelModule) as SelectLevelModule;
+			if (module != null)
+			{
+				module.OnSelectLevel(int.Parse(gameObject.name));
+			}
 		}
-
-
-
-
 	}
 }
 

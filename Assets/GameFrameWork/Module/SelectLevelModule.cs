@@ -13,7 +13,10 @@ namespace GFW
 			UIManager.Instance.OpenPage(UIDef.UISelectLevel);
 		}
 
-
+		public void OnSelectLevel(int level)
+		{
+			ModuleManager.Instance.ShowModule(ModuleDef.SelectDifficultyModule, level);	
+		}
 	}
 }
 

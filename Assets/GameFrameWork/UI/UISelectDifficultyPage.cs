@@ -7,7 +7,7 @@ using GE;
 
 namespace GFW
 {
-	public class UIHomePage :  UIPage 
+	public class UISelectDifficultyPage:UIPage 
 	{
 		[SerializeField]
 		private Button m_btnStart;
@@ -15,6 +15,7 @@ namespace GFW
 		protected override void OnOpen(object arg = null)
 		{
 			base.OnOpen (arg);
+
 			if (m_btnStart != null)
 			{
 				m_btnStart.onClick.AddListener(OnStart);
@@ -28,18 +29,15 @@ namespace GFW
 				m_btnStart.onClick.RemoveAllListeners();
 			}
 		}
-
+			
 		private void OnStart()
 		{
-			var module = ModuleManager.Instance.GetModule(ModuleDef.HomeModule) as HomeModule;
+			var module = ModuleManager.Instance.GetModule(ModuleDef.SelectDifficultyModule) as SelectDifficultyModule;
 			if (module != null)
 			{
-				module.OpenModule(ModuleDef.SelectLevelModule, null);
+				module.OnStartBattle (1,1);
+
 			}	
 		}
-
-
-
 	}
 }
-

@@ -10,7 +10,7 @@ public class GameMain : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-		Debuger.EnableLog = true;
+		Debuger.EnableLog = false;
 
 
 		InitServices ();
@@ -35,6 +35,9 @@ public class GameMain : MonoBehaviour
 		ModuleManager.Instance.CreateModule (ModuleDef.LoadingModule);
 		ModuleManager.Instance.CreateModule (ModuleDef.HomeModule);
 		ModuleManager.Instance.CreateModule (ModuleDef.SelectLevelModule);
+		ModuleManager.Instance.CreateModule (ModuleDef.BattleModule);
+		ModuleManager.Instance.CreateModule (ModuleDef.SelectDifficultyModule);
+
 		
 	}
 }
