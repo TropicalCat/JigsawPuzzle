@@ -17,32 +17,40 @@ public class PieceDrag :MonoBehaviour,
 	public RectTransform canvas;          //得到canvas的ugui坐标
 	private RectTransform imgRect;        //得到图片的ugui坐标
 	Vector2 offset = new Vector3();    //用来得到鼠标和图片的差值
-	Vector3 imgReduceScale = new Vector3(0.8f, 0.8f, 1);   //设置图片缩放
+	Vector3 imgReduceScale = new Vector3(0.95f, 0.95f, 1);   //设置图片缩放
 	Vector3 imgNormalScale = new Vector3(1, 1, 1);   //正常大小
 
 	bool bDown;
 
 
+
+
+
+
 	// Use this for initialization
 	void Start () 
 	{
-		imgRect = GetComponent<RectTransform>();	
+		imgRect = GetComponent<RectTransform>();
+		Canvas uiRoot = GameObject.Find("UIRoot").GetComponent<Canvas>();
+		if (null != uiRoot) 
+		{
+			canvas = uiRoot.transform as RectTransform;
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		if (bDown) {
-
-
-			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
-			RaycastHit hit;
-			if (Physics.Raycast (ray, out hit)) {
-
-				imgRect.anchoredPosition = new Vector2 (offset.x + hit.point.x, offset.y + hit.point.z);
-			}
-
-		}
+//		if (bDown) 
+//		{
+//
+//			Vector2 uguiPos = new Vector2();
+//			bool isRect = RectTransformUtility.ScreenPointToLocalPointInRectangle (canvas, Input.mousePosition, canvas.GetComponent<Canvas> ().worldCamera, out uguiPos);
+//			if(isRect)
+//			{
+//				imgRect.anchoredPosition = offset + uguiPos;
+//			}
+//		}
 	}
 
 	//当鼠标按下时调用 接口对应  IPointerDownHandler
@@ -67,38 +75,22 @@ public class PieceDrag :MonoBehaviour,
 	//当鼠标拖动时调用   对应接口 IDragHandler
 	public void OnDrag(PointerEventData eventData)
 	{
-//		Vector2 mouseDrag = eventData.position;   //当鼠标拖动时的屏幕坐标
-//		Vector2 uguiPos = new Vector2();   //用来接收转换后的拖动坐标
-//		//和上面类似
-//		bool isRect = RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas, mouseDrag, eventData.enterEventCamera, out uguiPos);
-//		if (isRect)
-//		{
-//			//设置图片的ugui坐标与鼠标的ugui坐标保持不变
-//			imgRect.anchoredPosition = offset + uguiPos;
-//		}
+		Vector2 mouseDrag = eventData.position;   //当鼠标拖动时的屏幕坐标
+		Vector2 uguiPos = new Vector2();   //用来接收转换后的拖动坐标
+		//和上面类似
+		bool isRect = RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas, mouseDrag, eventData.enterEventCamera, out uguiPos);
+		if (isRect)
+		{
+			//设置图片的ugui坐标与鼠标的ugui坐标保持不变
+			imgRect.anchoredPosition = offset + uguiPos;
+		}
 	}
-
-
-//	public void OnMove(UnityEngine.EventSystems.AxisEventData eventData)
-//	{
-//		if (bDown) 
-//		{
-//			Vector2 mouseDrag = eventData.currentInputModule.input.mousePosition;   //当鼠标拖动时的屏幕坐标
-//			Vector2 uguiPos = new Vector2();   //用来接收转换后的拖动坐标
-//			//和上面类似
-//			bool isRect = RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas, mouseDrag, , out uguiPos);
-//			if (isRect)
-//			{
-//				//设置图片的ugui坐标与鼠标的ugui坐标保持不变
-//				imgRect.anchoredPosition = offset + uguiPos;
-//			}
-//		}
-//	}
 
 	//当鼠标抬起时调用  对应接口  IPointerUpHandler
 	public void OnPointerUp(PointerEventData eventData)
 	{
 		offset = Vector2.zero;
+		bDown = false;
 	}
 
 	//当鼠标结束拖动时调用   对应接口  IEndDragHandler
