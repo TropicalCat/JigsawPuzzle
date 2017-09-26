@@ -106,7 +106,7 @@ namespace GE
 				return;
 			}
 
-			root.transform.DetachChildren (child);
+			//root.transform.DetachChildren ();
 		}
 
     }
