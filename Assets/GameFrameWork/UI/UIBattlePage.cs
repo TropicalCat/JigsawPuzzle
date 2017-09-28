@@ -27,16 +27,16 @@ namespace GFW
 		{
 			string pth = PieceManager.Instance.GetCurIllustration ();
 
-			Image image = gameObject.transform.FindChild ("LeftDown").FindChild ("Piece").GetComponent<Image> ();
+			Image image = gameObject.transform.Find ("LeftDown").Find ("Piece").GetComponent<Image> ();
 			image.sprite = Resources.Load(pth, typeof(Sprite)) as Sprite;
 
-			 image = gameObject.transform.FindChild ("LeftUp").FindChild ("Piece").GetComponent<Image> ();
+			 image = gameObject.transform.Find ("LeftUp").Find ("Piece").GetComponent<Image> ();
 			image.sprite = Resources.Load(pth, typeof(Sprite)) as Sprite;
 
-			 image = gameObject.transform.FindChild ("RightDown").FindChild ("Piece").GetComponent<Image> ();
+			 image = gameObject.transform.Find ("RightDown").Find ("Piece").GetComponent<Image> ();
 			image.sprite = Resources.Load(pth, typeof(Sprite)) as Sprite;
 
-			 image = gameObject.transform.FindChild ("RightUp").FindChild ("Piece").GetComponent<Image> ();
+			 image = gameObject.transform.Find ("RightUp").Find ("Piece").GetComponent<Image> ();
 			image.sprite = Resources.Load(pth, typeof(Sprite)) as Sprite;
 
 

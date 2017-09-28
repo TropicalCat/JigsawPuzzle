@@ -41,7 +41,7 @@ public class PieceDrag :MonoBehaviour,
 		targetPos = imgRect.anchoredPosition;
 
 		targetOKay = false;
-		imgRect.anchoredPosition = new Vector2 (targetPos.x + UnityEngine.Random.Range(-256, 256),  targetPos.y + UnityEngine.Random.Range(-100,100));
+		imgRect.anchoredPosition = new Vector2 (targetPos.x + UnityEngine.Random.Range(-256, 256),   UnityEngine.Random.Range(-600,-800));
 	}
 	
 	// Update is called once per frame
@@ -64,6 +64,7 @@ public class PieceDrag :MonoBehaviour,
 	{
 		if (targetOKay)
 			return;
+		imgRect.localScale = imgReduceScale;   //缩小图片
 		Vector2 mouseDown = eventData.position;    //记录鼠标按下时的屏幕坐标
 		Vector2 mouseUguiPos = new Vector2();   //定义一个接收返回的ugui坐标
 		//RectTransformUtility.ScreenPointToLocalPointInRectangle()：把屏幕坐标转化成ugui坐标
@@ -107,6 +108,7 @@ public class PieceDrag :MonoBehaviour,
 			return;
 		offset = Vector2.zero;
 		bDown = false;
+		imgRect.localScale = imgNormalScale;   //回复图片
 	}
 
 	//当鼠标结束拖动时调用   对应接口  IEndDragHandler
@@ -117,20 +119,12 @@ public class PieceDrag :MonoBehaviour,
 		offset = Vector2.zero;
 
 		Vector2 curPos = imgRect.anchoredPosition;
-
-
-
 		curPos = (targetPos - curPos);
-
-		if (Math.Abs (curPos.x) <= 10f || Math.Abs (curPos.y) <= 10f) {
-
+		if (Math.Abs (curPos.x) <= 32f || Math.Abs (curPos.y) <= 32f)
+		{
 			imgRect.anchoredPosition = targetPos;
 			targetOKay = true;
-
 		}
-
-
-
 
 	}
 

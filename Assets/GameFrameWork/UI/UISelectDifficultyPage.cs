@@ -20,6 +20,16 @@ namespace GFW
 			{
 				m_btnStart.onClick.AddListener(OnStart);
 			}
+
+			initPiece ();
+		}
+
+
+		void initPiece()
+		{
+			string pth = PieceManager.Instance.GetCurIllustration ();
+			Image image = gameObject.transform.Find ("Preview").GetComponent<Image> ();
+			image.sprite = Resources.Load(pth, typeof(Sprite)) as Sprite;
 		}
 
 		protected override void OnClose(object arg = null)
@@ -36,7 +46,7 @@ namespace GFW
 			var module = ModuleManager.Instance.GetModule(ModuleDef.SelectDifficultyModule) as SelectDifficultyModule;
 			if (module != null)
 			{
-				module.OnStartBattle (1,1);
+				module.OnStartBattle (0,0);
 			}	
 		}
 	}
