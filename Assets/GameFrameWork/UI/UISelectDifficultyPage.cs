@@ -28,6 +28,7 @@ namespace GFW
 			{
 				m_btnStart.onClick.RemoveAllListeners();
 			}
+			base.OnClose (arg);
 		}
 			
 		private void OnStart()
@@ -36,7 +37,6 @@ namespace GFW
 			if (module != null)
 			{
 				module.OnStartBattle (1,1);
-
 			}	
 		}
 	}

@@ -19,6 +19,13 @@ namespace GFW
 			yield return new WaitForSeconds (1f);
 			LoadFinish ();
 		}
+			
+		protected override void OnClose(object arg = null)
+		{
+			base.OnClose (arg);
+			//销毁掉窗口
+			Destroy (gameObject);
+		}
 
 		private void LoadFinish()
 		{

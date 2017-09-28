@@ -33,10 +33,20 @@ namespace GFW
 			CurDifficulty=0;
 		}
 			
-		public void SetPiece(int level, int difficulty)
+		public void SetLevel(int level)
 		{
 			CurLevel = level;
+
+		}
+
+		public void SetDifficulty(int difficulty)
+		{
 			CurDifficulty = difficulty;
+		}
+
+		public string GetCurIllustration()
+		{
+			return "Texture/Piece/illustration/Illustration" + CurLevel;
 		}
 
 

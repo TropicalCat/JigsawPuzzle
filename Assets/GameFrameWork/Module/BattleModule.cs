@@ -12,10 +12,11 @@ namespace GFW
 		{
 			base.Show (arg);
 			UIManager.Instance.OpenPage(UIDef.UIBattle);
-			//int level = arg as int;
-			string s = 
-			arg.ToString();
+			string s = arg.ToString();
 		}
+
+
+
 
 
 	}

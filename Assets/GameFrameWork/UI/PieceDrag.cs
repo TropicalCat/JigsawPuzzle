@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using System;
 
+
 //给空间添加监听事件要实现的一些接口
 public class PieceDrag :MonoBehaviour, 
 						IPointerDownHandler, 
@@ -24,8 +25,8 @@ public class PieceDrag :MonoBehaviour,
 
 
 
-
-
+	Vector2 targetPos = new Vector3();
+	bool targetOKay  = false;
 
 	// Use this for initialization
 	void Start () 
@@ -36,6 +37,11 @@ public class PieceDrag :MonoBehaviour,
 		{
 			canvas = uiRoot.transform as RectTransform;
 		}
+
+		targetPos = imgRect.anchoredPosition;
+
+		targetOKay = false;
+		imgRect.anchoredPosition = new Vector2 (targetPos.x + UnityEngine.Random.Range(-256, 256),  targetPos.y + UnityEngine.Random.Range(-100,100));
 	}
 	
 	// Update is called once per frame
@@ -56,6 +62,8 @@ public class PieceDrag :MonoBehaviour,
 	//当鼠标按下时调用 接口对应  IPointerDownHandler
 	public void OnPointerDown(PointerEventData eventData)
 	{
+		if (targetOKay)
+			return;
 		Vector2 mouseDown = eventData.position;    //记录鼠标按下时的屏幕坐标
 		Vector2 mouseUguiPos = new Vector2();   //定义一个接收返回的ugui坐标
 		//RectTransformUtility.ScreenPointToLocalPointInRectangle()：把屏幕坐标转化成ugui坐标
@@ -79,6 +87,8 @@ public class PieceDrag :MonoBehaviour,
 	//当鼠标拖动时调用   对应接口 IDragHandler
 	public void OnDrag(PointerEventData eventData)
 	{
+		if (targetOKay)
+			return;
 		Vector2 mouseDrag = eventData.position;   //当鼠标拖动时的屏幕坐标
 		Vector2 uguiPos = new Vector2();   //用来接收转换后的拖动坐标
 		//和上面类似
@@ -93,6 +103,8 @@ public class PieceDrag :MonoBehaviour,
 	//当鼠标抬起时调用  对应接口  IPointerUpHandler
 	public void OnPointerUp(PointerEventData eventData)
 	{
+		if (targetOKay)
+			return;
 		offset = Vector2.zero;
 		bDown = false;
 	}
@@ -100,7 +112,26 @@ public class PieceDrag :MonoBehaviour,
 	//当鼠标结束拖动时调用   对应接口  IEndDragHandler
 	public void OnEndDrag(PointerEventData eventData)
 	{
+		if (targetOKay)
+			return;
 		offset = Vector2.zero;
+
+		Vector2 curPos = imgRect.anchoredPosition;
+
+
+
+		curPos = (targetPos - curPos);
+
+		if (Math.Abs (curPos.x) <= 10f || Math.Abs (curPos.y) <= 10f) {
+
+			imgRect.anchoredPosition = targetPos;
+			targetOKay = true;
+
+		}
+
+
+
+
 	}
 
 	//当鼠标进入图片时调用   对应接口   IPointerEnterHandler

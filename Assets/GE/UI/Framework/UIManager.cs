@@ -116,8 +116,12 @@ namespace GE
             {
                 if (m_listLoadedPanel[i].IsOpen)
                 {
-                    m_listLoadedPanel[i].Close();
+                    
+
+					//UIRoot.RemoveChild (m_listLoadedPanel[i]);
+					m_listLoadedPanel[i].Close();
                 }
+				m_listLoadedPanel.Clear ();
             }
         }
 
@@ -130,6 +134,16 @@ namespace GE
         public void EnterMainPage()
         {
             m_pageTrackStack.Clear();
+
+			for (int i = 0; i < m_listLoadedPanel.Count; i++)
+			{
+				if (m_listLoadedPanel[i].IsOpen)
+				{
+					m_listLoadedPanel[i].Close();
+				}
+			}
+			m_listLoadedPanel.Clear ();
+
             OpenPageWorker(MainScene, MainPage, null);
         }
 

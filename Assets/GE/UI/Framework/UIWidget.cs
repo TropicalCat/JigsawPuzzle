@@ -37,7 +37,6 @@ namespace GE
             this.Log("Close() arg:{0}", arg);
             if (this.gameObject.activeSelf)
             {
-
                 this.gameObject.SetActive(false);
             }
 
