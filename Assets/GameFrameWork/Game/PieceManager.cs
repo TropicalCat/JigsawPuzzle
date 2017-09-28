@@ -29,6 +29,14 @@ namespace GFW
 
 		public void Clear()
 		{
+			CurLevel=0;		//当前关卡	
+			CurDifficulty=0;
+		}
+			
+		public void SetPiece(int level, int difficulty)
+		{
+			CurLevel = level;
+			CurDifficulty = difficulty;
 		}
 
 

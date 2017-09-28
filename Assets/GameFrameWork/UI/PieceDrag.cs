@@ -68,6 +68,10 @@ public class PieceDrag :MonoBehaviour,
 		{
 			//计算图片中心和鼠标点的差值
 			offset = imgRect.anchoredPosition - mouseUguiPos;
+
+			//imgRect.transform.
+
+			imgRect.transform.SetSiblingIndex(100);
 		}
 		bDown = true;
 	}

@@ -7,6 +7,10 @@ namespace GFW
 {
 	public class GameManager : ServiceModule<GameManager>
 	{
+
+
+
+
 		public GameManager()
 		{
 		}
