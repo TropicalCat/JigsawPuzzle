@@ -7,10 +7,6 @@ namespace GFW
 {
 	public class GameManager : ServiceModule<GameManager>
 	{
-
-
-
-
 		public GameManager()
 		{
 		}
@@ -26,13 +22,6 @@ namespace GFW
 		public void Clear()
 		{
 		}
-
-
-
-
-
-
-
 
 	}
 }

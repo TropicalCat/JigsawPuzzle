@@ -21,8 +21,7 @@ namespace GFW
 			//销毁掉窗口
 			Destroy (gameObject);
 		}
-
-
+			
 		void initPiece()
 		{
 			string pth = PieceManager.Instance.GetCurIllustration ();
@@ -30,16 +29,14 @@ namespace GFW
 			Image image = gameObject.transform.Find ("LeftDown").Find ("Piece").GetComponent<Image> ();
 			image.sprite = Resources.Load(pth, typeof(Sprite)) as Sprite;
 
-			 image = gameObject.transform.Find ("LeftUp").Find ("Piece").GetComponent<Image> ();
+			image = gameObject.transform.Find ("LeftUp").Find ("Piece").GetComponent<Image> ();
 			image.sprite = Resources.Load(pth, typeof(Sprite)) as Sprite;
 
-			 image = gameObject.transform.Find ("RightDown").Find ("Piece").GetComponent<Image> ();
+			image = gameObject.transform.Find ("RightDown").Find ("Piece").GetComponent<Image> ();
 			image.sprite = Resources.Load(pth, typeof(Sprite)) as Sprite;
 
-			 image = gameObject.transform.Find ("RightUp").Find ("Piece").GetComponent<Image> ();
+			image = gameObject.transform.Find ("RightUp").Find ("Piece").GetComponent<Image> ();
 			image.sprite = Resources.Load(pth, typeof(Sprite)) as Sprite;
-
-
 		}
 	}
 }

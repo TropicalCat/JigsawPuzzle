@@ -14,7 +14,6 @@ namespace GFW
 			base.Show (arg);
 			selectLevel = arg.ToString ();
 			UIManager.Instance.OpenPage(UIDef.UISelectDifficulty);
-
 		}
 
 		public void OnStartBattle(int level, int difficulty)

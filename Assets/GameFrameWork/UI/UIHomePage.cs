@@ -40,8 +40,7 @@ namespace GFW
 				module.OpenModule(ModuleDef.SelectLevelModule, null);
 			}	
 		}
-
-
+			
 
 	}
 }

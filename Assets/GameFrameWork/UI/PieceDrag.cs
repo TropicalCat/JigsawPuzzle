@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using System;
+using GE;
+using GFW;
 
 
 //给空间添加监听事件要实现的一些接口
@@ -124,6 +126,7 @@ public class PieceDrag :MonoBehaviour,
 		{
 			imgRect.anchoredPosition = targetPos;
 			targetOKay = true;
+			PieceManager.Instance.DonePiece ();
 		}
 
 	}

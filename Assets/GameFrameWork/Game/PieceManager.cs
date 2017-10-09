@@ -13,6 +13,9 @@ namespace GFW
 
 
 
+		private int UndonePiece;	//未完成
+
+
 		public PieceManager()
 		{
 		}
@@ -36,7 +39,7 @@ namespace GFW
 		public void SetLevel(int level)
 		{
 			CurLevel = level;
-
+			UndonePiece = 4;
 		}
 
 		public void SetDifficulty(int difficulty)
@@ -47,6 +50,22 @@ namespace GFW
 		public string GetCurIllustration()
 		{
 			return "Texture/Piece/illustration/Illustration" + CurLevel;
+		}
+
+		public void DonePiece()
+		{
+			UndonePiece--;
+
+			if(UndonePiece <= 0)
+			{
+				//胜利
+
+
+
+
+				ModuleManager.Instance.ShowModule(ModuleDef.ResultModule, null);
+			}
+			
 		}
 
 
