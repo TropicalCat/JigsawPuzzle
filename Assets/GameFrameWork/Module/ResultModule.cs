@@ -16,6 +16,17 @@ namespace GFW
 			//string s = arg.ToString();
 		}
 
+		//重新开始战斗
+		public void OnRestart()
+		{
+			GameManager.Instance.RestartBattle ();
+		}
+
+		public void OnHome()
+		{
+			UIManager.Instance.EnterMainPage ();
+		}
+
 
 
 

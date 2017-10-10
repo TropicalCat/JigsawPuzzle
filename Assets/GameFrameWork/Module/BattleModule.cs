@@ -12,7 +12,10 @@ namespace GFW
 		{
 			base.Show (arg);
 			UIManager.Instance.OpenPage(UIDef.UIBattle);
-			string s = arg.ToString();
+			if (null != arg) 
+			{
+				//string s = arg.ToString();
+			}
 		}
 
 
