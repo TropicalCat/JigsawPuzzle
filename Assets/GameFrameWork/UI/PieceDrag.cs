@@ -126,7 +126,8 @@ public class PieceDrag :MonoBehaviour,
 		{
 			imgRect.anchoredPosition = targetPos;
 			targetOKay = true;
-			PieceManager.Instance.DonePiece ();
+
+			StartCoroutine (DonePiece());
 		}
 
 	}
@@ -141,5 +142,12 @@ public class PieceDrag :MonoBehaviour,
 	public void OnPointerExit(PointerEventData eventData)
 	{
 		//imgRect.localScale = imgNormalScale;   //回复图片
+	}
+
+
+	IEnumerator DonePiece()
+	{
+		yield return new WaitForSeconds (0.5f);
+		PieceManager.Instance.DonePiece ();
 	}
 }
