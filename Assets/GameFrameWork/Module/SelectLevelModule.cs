@@ -15,6 +15,7 @@ namespace GFW
 
 		public void OnSelectLevel(int level)
 		{
+			PieceManager.Instance.Clear ();
 			PieceManager.Instance.SetLevel (level);
 			ModuleManager.Instance.ShowModule(ModuleDef.SelectDifficultyModule, level);	
 		}

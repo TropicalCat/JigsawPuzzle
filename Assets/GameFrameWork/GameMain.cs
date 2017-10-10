@@ -28,6 +28,8 @@ public class GameMain : MonoBehaviour
 	private void InitServices()
 	{
 		ModuleManager.Instance.Init ("GFW");
+		GameManager.Instance.Init ();
+		PieceManager.Instance.Init ();
 	}
 
 	private void InitBusiness()
@@ -38,7 +40,5 @@ public class GameMain : MonoBehaviour
 		ModuleManager.Instance.CreateModule (ModuleDef.BattleModule);
 		ModuleManager.Instance.CreateModule (ModuleDef.SelectDifficultyModule);
 		ModuleManager.Instance.CreateModule (ModuleDef.ResultModule);
-
-		
 	}
 }
