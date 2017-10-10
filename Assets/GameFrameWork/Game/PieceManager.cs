@@ -27,6 +27,7 @@ namespace GFW
 			IsNormal=false;
 			IsRevolve = false;
 			CurPieceCount = 4;
+			DonePieceCount = 0;
 		}
 
 		public void Destory()
@@ -39,6 +40,7 @@ namespace GFW
 			IsNormal=false;
 			IsRevolve = false;
 			CurPieceCount = 4;
+			DonePieceCount = 0;
 		}
 			
 		public void SetLevel(int level)
@@ -124,7 +126,6 @@ namespace GFW
 		public void DonePiece()
 		{
 			DonePieceCount++;
-
 			if(DonePieceCount >= CurPieceCount)
 			{
 				//胜利

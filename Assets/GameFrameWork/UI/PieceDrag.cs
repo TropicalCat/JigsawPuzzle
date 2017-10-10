@@ -20,7 +20,7 @@ public class PieceDrag :MonoBehaviour,
 	public RectTransform canvas;          //得到canvas的ugui坐标
 	private RectTransform imgRect;        //得到图片的ugui坐标
 	Vector2 offset = new Vector3();    //用来得到鼠标和图片的差值
-	Vector3 imgReduceScale = new Vector3(0.95f, 0.95f, 1);   //设置图片缩放
+	Vector3 imgReduceScale = new Vector3(0.3f, 0.3f, 1);   //设置图片缩放
 	Vector3 imgNormalScale = new Vector3(1, 1, 1);   //正常大小
 
 	bool bDown;
@@ -44,6 +44,7 @@ public class PieceDrag :MonoBehaviour,
 
 		targetOKay = false;
 		imgRect.anchoredPosition = new Vector2 (targetPos.x + UnityEngine.Random.Range(-256, 256),   UnityEngine.Random.Range(-600,-800));
+		imgRect.localScale = imgReduceScale;   //缩小图片
 	}
 	
 	// Update is called once per frame
@@ -66,7 +67,7 @@ public class PieceDrag :MonoBehaviour,
 	{
 		if (targetOKay)
 			return;
-		imgRect.localScale = imgReduceScale;   //缩小图片
+		imgRect.localScale = imgNormalScale;   //放大图片
 		Vector2 mouseDown = eventData.position;    //记录鼠标按下时的屏幕坐标
 		Vector2 mouseUguiPos = new Vector2();   //定义一个接收返回的ugui坐标
 		//RectTransformUtility.ScreenPointToLocalPointInRectangle()：把屏幕坐标转化成ugui坐标
@@ -110,7 +111,21 @@ public class PieceDrag :MonoBehaviour,
 			return;
 		offset = Vector2.zero;
 		bDown = false;
-		imgRect.localScale = imgNormalScale;   //回复图片
+		//imgRect.localScale = imgNormalScale;   //回复图片
+
+		Vector2 curPos = imgRect.anchoredPosition;
+		curPos = (targetPos - curPos);
+		if (Math.Abs (curPos.x) <= 32f || Math.Abs (curPos.y) <= 32f) 
+		{
+			imgRect.anchoredPosition = targetPos;
+			targetOKay = true;
+
+			StartCoroutine (DonePiece ());
+		} 
+		else
+		{
+			imgRect.localScale = imgReduceScale;
+		}
 	}
 
 	//当鼠标结束拖动时调用   对应接口  IEndDragHandler
@@ -119,16 +134,20 @@ public class PieceDrag :MonoBehaviour,
 		if (targetOKay)
 			return;
 		offset = Vector2.zero;
-
-		Vector2 curPos = imgRect.anchoredPosition;
-		curPos = (targetPos - curPos);
-		if (Math.Abs (curPos.x) <= 32f || Math.Abs (curPos.y) <= 32f)
-		{
-			imgRect.anchoredPosition = targetPos;
-			targetOKay = true;
-
-			StartCoroutine (DonePiece());
-		}
+//
+//		Vector2 curPos = imgRect.anchoredPosition;
+//		curPos = (targetPos - curPos);
+//		if (Math.Abs (curPos.x) <= 32f || Math.Abs (curPos.y) <= 32f) 
+//		{
+//			imgRect.anchoredPosition = targetPos;
+//			targetOKay = true;
+//
+//			StartCoroutine (DonePiece ());
+//		} 
+//		else
+//		{
+//			imgRect.localScale = imgReduceScale;
+//		}
 
 	}
 
