@@ -10,10 +10,10 @@ namespace GFW
 
 		private int CurLevel;		//当前关卡	
 		private int CurDifficulty;	//当前难度
+		private int CurPieceCount;	//当前碎片数量
 
 
-
-		private int UndonePiece;	//未完成
+		private int DonePieceCount;	//完成
 
 
 		public PieceManager()
@@ -39,12 +39,18 @@ namespace GFW
 		public void SetLevel(int level)
 		{
 			CurLevel = level;
-			UndonePiece = 4;
+			//CurPieceCount = 4;
 		}
 
 		public void SetDifficulty(int difficulty)
 		{
 			CurDifficulty = difficulty;
+		}
+
+		public int PieceCount
+		{
+			get{ return CurPieceCount;}
+			set{ CurPieceCount = value;}
 		}
 
 		public string GetCurIllustration()
@@ -54,18 +60,19 @@ namespace GFW
 
 		public void DonePiece()
 		{
-			UndonePiece--;
+			DonePieceCount++;
 
-			if(UndonePiece <= 0)
+			if(DonePieceCount >= CurPieceCount)
 			{
 				//胜利
-
-
-
-
 				ModuleManager.Instance.ShowModule(ModuleDef.ResultModule, null);
-			}
-			
+			}	
+		}
+
+	
+		public void ClearPiece()
+		{
+			DonePieceCount = 0;
 		}
 
 

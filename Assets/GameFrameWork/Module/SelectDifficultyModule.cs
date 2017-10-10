@@ -18,8 +18,10 @@ namespace GFW
 
 		public void OnStartBattle(int level, int difficulty)
 		{
-			ModuleManager.Instance.ShowModule(ModuleDef.BattleModule, level);	
+			//ModuleManager.Instance.ShowModule(ModuleDef.BattleModule, level);	
 
+			PieceManager.Instance.PieceCount = 4;
+			GameManager.Instance.StartBattle ();
 		}
 	}
 

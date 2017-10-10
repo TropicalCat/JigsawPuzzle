@@ -23,5 +23,35 @@ namespace GFW
 		{
 		}
 
+		//开始拼图
+		public void StartBattle()
+		{
+			ModuleManager.Instance.ShowModule(ModuleDef.BattleModule);
+		}
+
+		//重新开始拼图
+		public void RestartBattle()
+		{
+			PieceManager.Instance.ClearPiece ();
+			ModuleManager.Instance.ShowModule(ModuleDef.BattleModule);
+		}
+
+		//完成拼图
+		public void EndBattle()
+		{
+			
+		}
+
+		//未完成退出拼图
+		public void QuitBattle()
+		{
+			
+		}
+
+		//
+		public void StartNextBattle()
+		{
+		}
+
 	}
 }
