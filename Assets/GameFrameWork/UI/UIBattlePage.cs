@@ -12,7 +12,6 @@ namespace GFW
 		[SerializeField]
 		private Button m_btnArtist;
 
-
 		protected override void OnOpen(object arg = null)
 		{
 			base.OnOpen (arg);
@@ -23,6 +22,7 @@ namespace GFW
 				m_btnArtist.onClick.AddListener(OnArtist);
 			}
 
+			showArtist (false);
 		}
 
 		protected override void OnClose(object arg = null)
@@ -59,15 +59,33 @@ namespace GFW
 			image.sprite = pieceImage;
 
 		}
-
-	
+			
 		private void OnArtist()
 		{
 			GameObject obj = gameObject.transform.Find ("PieceZone").gameObject;
-			obj.SetActive (!obj.activeSelf);
-
-
-			
+			showArtist (!obj.activeSelf);
 		}
+			
+		private void showArtist(bool bShow)
+		{
+			GameObject objPieceZone = gameObject.transform.Find ("PieceZone").gameObject;
+			objPieceZone.SetActive (bShow);
+
+			if (m_btnArtist != null) 
+			{
+				if (bShow) 
+				{
+					Image image = m_btnArtist.GetComponent<Image> ();
+					image.sprite = Resources.Load("Texture/UI/ArtistOff", typeof(Sprite)) as Sprite;
+				}
+				else 
+				{
+					Image image = m_btnArtist.GetComponent<Image> ();
+					image.sprite = Resources.Load("Texture/UI/ArtistShow", typeof(Sprite)) as Sprite;
+				}
+			}
+		}
+
+
 	}
 }
