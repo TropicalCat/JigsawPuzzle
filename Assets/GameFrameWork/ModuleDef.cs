@@ -9,6 +9,7 @@ namespace GFW
 		public const string BattleModule = "BattleModule";
 		public const string SelectDifficultyModule = "SelectDifficultyModule";
 		public const string ResultModule = "ResultModule";
+		public const string QuitBattleModule = "QuitBattleModule";
 	}
 }
 

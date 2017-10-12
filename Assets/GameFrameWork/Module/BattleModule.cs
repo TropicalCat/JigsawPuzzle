@@ -18,6 +18,11 @@ namespace GFW
 			}
 		}
 
+		public void QuitBattle()
+		{
+			
+		}
+
 
 
 

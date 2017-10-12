@@ -11,6 +11,7 @@ namespace GFW
 		public const string UIBattle = "Battle";
 		public const string UISelectDifficulty = "SelectDifficulty";
 		public const string UIResult = "Result";//结果页
+		public const string UIQuitBattle = "QuitBattle";
 
 	}	
 }
