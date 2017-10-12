@@ -10,7 +10,7 @@ namespace GE
         public const string LOG_TAG = "UIManager";
 
         public static string MainScene = "Main";
-        public static string MainPage = "Home";
+		public static string MainPage = "SelectLevel";
 
         
         class UIPageTrack
@@ -236,6 +236,18 @@ namespace GE
             UIWindow ui = Open<UIWindow>(name, arg);
             return ui;
         }
+
+		public void CloseWindow(UIWindow wnd)
+		{
+			if (wnd != null) 
+			{
+				if (wnd.IsOpen)
+				{
+					wnd.Close ();
+				}
+				m_listLoadedPanel.Remove (wnd);
+			}
+		}
 
 
         #endregion

@@ -12,6 +12,9 @@ namespace GFW
 		[SerializeField]
 		private Button m_btnArtist;
 
+		[SerializeField]
+		private Button m_btnQuit;
+
 		protected override void OnOpen(object arg = null)
 		{
 			base.OnOpen (arg);
@@ -22,6 +25,11 @@ namespace GFW
 				m_btnArtist.onClick.AddListener(OnArtist);
 			}
 
+			if (m_btnQuit != null) 
+			{
+				m_btnQuit.onClick.AddListener (OnQuitBattle);
+			}
+
 			showArtist (false);
 		}
 
@@ -30,6 +38,10 @@ namespace GFW
 			if (m_btnArtist != null)
 			{
 				m_btnArtist.onClick.RemoveAllListeners();
+			}
+			if (m_btnQuit != null)
+			{
+				m_btnQuit.onClick.RemoveAllListeners();
 			}
 
 			base.OnClose (arg);
@@ -73,7 +85,7 @@ namespace GFW
 
 			if (m_btnArtist != null) 
 			{
-				if (bShow) 
+				if (!bShow) 
 				{
 					Image image = m_btnArtist.GetComponent<Image> ();
 					image.sprite = Resources.Load("Texture/UI/ArtistOff", typeof(Sprite)) as Sprite;
@@ -84,6 +96,15 @@ namespace GFW
 					image.sprite = Resources.Load("Texture/UI/ArtistShow", typeof(Sprite)) as Sprite;
 				}
 			}
+		}
+
+		private void OnQuitBattle()
+		{
+			var module = ModuleManager.Instance.GetModule(ModuleDef.BattleModule) as BattleModule;
+			if (module != null)
+			{
+				module.OnQuitBattle();
+			}	
 		}
 
 

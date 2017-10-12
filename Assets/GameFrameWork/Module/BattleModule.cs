@@ -18,12 +18,10 @@ namespace GFW
 			}
 		}
 
-		public void QuitBattle()
+		public void OnQuitBattle()
 		{
-			
+			ModuleManager.Instance.ShowModule(ModuleDef.QuitBattleModule);
 		}
-
-
 
 
 

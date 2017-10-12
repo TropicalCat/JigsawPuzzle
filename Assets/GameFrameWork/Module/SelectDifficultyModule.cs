@@ -8,10 +8,11 @@ namespace GFW
 
 	public class SelectDifficultyModule : BusinessModule
 	{
-		string selectLevel;
+		
 		protected override void Show(object arg)
 		{
 			base.Show (arg);
+			string selectLevel;
 			selectLevel = arg.ToString ();
 			UIManager.Instance.OpenPage(UIDef.UISelectDifficulty);
 		}
@@ -21,7 +22,10 @@ namespace GFW
 			//ModuleManager.Instance.ShowModule(ModuleDef.BattleModule, level);	
 
 			PieceManager.Instance.PieceCount = 4;
-			GameManager.Instance.StartBattle ();
+
+
+
+			ModuleManager.Instance.ShowModule (ModuleDef.LoadingModule);
 		}
 	}
 

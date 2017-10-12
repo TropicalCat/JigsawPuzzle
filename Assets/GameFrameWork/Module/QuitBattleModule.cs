@@ -11,11 +11,16 @@ namespace GFW
 		protected override void Show(object arg)
 		{
 			base.Show (arg);
-			UIManager.Instance.OpenPage (UIDef.UIBattle);
+			UIManager.Instance.OpenWindow (UIDef.UIQuitBattle);
 			if (null != arg) 
 			{
 				//string s = arg.ToString();
 			}
+		}
+			
+		public void OnQuitBattle()
+		{
+			UIManager.Instance.EnterMainPage ();	
 		}
 
 	

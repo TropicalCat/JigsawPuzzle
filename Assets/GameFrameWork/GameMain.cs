@@ -6,23 +6,20 @@ using GFW;
 
 public class GameMain : MonoBehaviour 
 {
-
 	// Use this for initialization
 	void Start () 
 	{
 		Debuger.EnableLog = false;
 
-
 		InitServices ();
 		InitBusiness ();
 
-		ModuleManager.Instance.ShowModule (ModuleDef.LoadingModule);
+		ModuleManager.Instance.ShowModule (ModuleDef.HomeModule);
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		
 	}
 
 	private void InitServices()
@@ -34,11 +31,12 @@ public class GameMain : MonoBehaviour
 
 	private void InitBusiness()
 	{
-		ModuleManager.Instance.CreateModule (ModuleDef.LoadingModule);
 		ModuleManager.Instance.CreateModule (ModuleDef.HomeModule);
 		ModuleManager.Instance.CreateModule (ModuleDef.SelectLevelModule);
-		ModuleManager.Instance.CreateModule (ModuleDef.BattleModule);
 		ModuleManager.Instance.CreateModule (ModuleDef.SelectDifficultyModule);
+		ModuleManager.Instance.CreateModule (ModuleDef.LoadingModule);
+		ModuleManager.Instance.CreateModule (ModuleDef.BattleModule);
+		ModuleManager.Instance.CreateModule (ModuleDef.QuitBattleModule);
 		ModuleManager.Instance.CreateModule (ModuleDef.ResultModule);
 	}
 }

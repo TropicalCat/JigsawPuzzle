@@ -22,7 +22,9 @@ namespace GFW
 			//将登录成功事件通知给整个游戏
 			//GlobalEvent.onLogin.Invoke(true);
 
-			UIManager.Instance.EnterMainPage ();
+			//UIManager.Instance.EnterMainPage ();
+
+			GameManager.Instance.StartBattle ();
 		}
 			
 	}
