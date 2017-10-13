@@ -5,7 +5,7 @@ using GE;
 
 namespace GFW
 {
-	public class UILoadingPage : UIPage
+	public class UILoadingWnd : UIWindow
 	{
 		protected override void OnOpen(object arg = null)
 		{
@@ -19,10 +19,11 @@ namespace GFW
 			yield return new WaitForSeconds (1f);
 			LoadFinish ();
 		}
-			
+
 		protected override void OnClose(object arg = null)
 		{
 			base.OnClose (arg);
+			UIManager.Instance.CloseWindow (this);
 			//销毁掉窗口
 			Destroy (gameObject);
 		}
@@ -38,3 +39,4 @@ namespace GFW
 
 	}
 }
+

@@ -12,19 +12,14 @@ namespace GFW
 		protected override void Show(object arg)
 		{
 			base.Show (arg);
-			string selectLevel;
-			selectLevel = arg.ToString ();
+			//string selectLevel = arg.ToString ();
 			UIManager.Instance.OpenPage(UIDef.UISelectDifficulty);
 		}
 
 		public void OnStartBattle(int level, int difficulty)
 		{
 			//ModuleManager.Instance.ShowModule(ModuleDef.BattleModule, level);	
-
 			PieceManager.Instance.PieceCount = 4;
-
-
-
 			ModuleManager.Instance.ShowModule (ModuleDef.LoadingModule);
 		}
 	}

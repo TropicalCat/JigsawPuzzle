@@ -39,13 +39,11 @@ namespace GFW
 		//完成拼图
 		public void EndBattle()
 		{
-			
 		}
 
 		//未完成退出拼图
 		public void QuitBattle()
 		{
-			
 		}
 
 		//

@@ -7,14 +7,11 @@ namespace GFW
 {
 	public class PieceManager : ServiceModule<PieceManager>
 	{
-
-		private int CurLevel;		//当前关卡	
-		private bool IsNormal;	//当前难度
-		private bool IsRevolve;
-		private int CurPieceCount;	//当前碎片数量
-
-
-		private int DonePieceCount;	//完成
+		private int m_curLevel;		//当前关卡	
+		private bool m_isNormal;	//是否困难模式
+		private bool m_isRevolve;	//是否旋转模式
+		private int m_curPieceCount;	//当前碎片总数量
+		private int m_donePieceCount;	//复位的碎片数量
 
 
 		public PieceManager()
@@ -23,11 +20,11 @@ namespace GFW
 
 		public void Init()
 		{
-			CurLevel=0;		//当前关卡	
-			IsNormal=false;
-			IsRevolve = false;
-			CurPieceCount = 4;
-			DonePieceCount = 0;
+			m_curLevel=0;		//当前关卡	
+			m_isNormal=false;
+			m_isRevolve = false;
+			m_curPieceCount = 4;
+			m_donePieceCount = 0;
 		}
 
 		public void Destory()
@@ -36,44 +33,44 @@ namespace GFW
 
 		public void Clear()
 		{
-			CurLevel=0;		//当前关卡	
-			IsNormal=false;
-			IsRevolve = false;
-			CurPieceCount = 4;
-			DonePieceCount = 0;
+			m_curLevel=0;		//当前关卡	
+			m_isNormal=false;
+			m_isRevolve = false;
+			m_curPieceCount = 4;
+			m_donePieceCount = 0;
 		}
 			
 		public void SetLevel(int level)
 		{
-			CurLevel = level;
+			m_curLevel = level;
 		}
 
 		public int GetCurLevel()
 		{
-			return CurLevel;
+			return m_curLevel;
 		}
 
 		public bool Difficulty
 		{
-			get{ return IsNormal;}
-			set{ IsNormal = !IsNormal;}
+			get{ return m_isNormal;}
+			set{ m_isNormal = !m_isNormal;}
 		}
 
 		public bool Revolve
 		{
-			get{ return IsRevolve;}
-			set{ IsRevolve = !IsRevolve;}
+			get{ return m_isRevolve;}
+			set{ m_isRevolve = !m_isRevolve;}
 		}
 			
 		public int PieceCount
 		{
-			get{ return CurPieceCount;}
-			set{ CurPieceCount = value;}
+			get{ return m_curPieceCount;}
+			set{ m_curPieceCount = value;}
 		}
 
 		public void IncreasePiece()
 		{
-			switch (CurPieceCount) 
+			switch (m_curPieceCount) 
 			{
 			case 4:
 				PieceCount = 9;
@@ -94,7 +91,7 @@ namespace GFW
 
 		public void ReducePiece()
 		{
-			switch (CurPieceCount) 
+			switch (m_curPieceCount) 
 			{
 			case 36:
 				PieceCount = 25;
@@ -115,18 +112,18 @@ namespace GFW
 
 		public string GetCurPieceCount()
 		{
-			return "Texture/UI/Piece/Piece" + CurPieceCount;
+			return "Texture/UI/Piece/Piece" + m_curPieceCount;
 		}
 
 		public string GetCurIllustration()
 		{
-			return "Texture/Piece/illustration/Illustration" + CurLevel;
+			return "Texture/Piece/illustration/Illustration" + m_curLevel;
 		}
 
 		public void DonePiece()
 		{
-			DonePieceCount++;
-			if(DonePieceCount >= CurPieceCount)
+			m_donePieceCount++;
+			if(m_donePieceCount >= m_curPieceCount)
 			{
 				//胜利
 				ModuleManager.Instance.ShowModule(ModuleDef.ResultModule, null);
@@ -135,7 +132,7 @@ namespace GFW
 			
 		public void ClearPiece()
 		{
-			DonePieceCount = 0;
+			m_donePieceCount = 0;
 		}
 
 
