@@ -16,7 +16,6 @@ public class PieceDrag :MonoBehaviour,
 						IPointerEnterHandler,
 						IPointerExitHandler
 {
-
 	public RectTransform canvas;          //得到canvas的ugui坐标
 	private RectTransform imgRect;        //得到图片的ugui坐标
 	Vector2 offset = new Vector3();    //用来得到鼠标和图片的差值

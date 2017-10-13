@@ -9,6 +9,8 @@ namespace GE
 {
     public abstract class UIPanel:MonoBehaviour
     {
+		public AudioSource Sound;
+
         public virtual void Open(object arg = null)
         {
             this.Log("Open() arg:{0}", arg);
