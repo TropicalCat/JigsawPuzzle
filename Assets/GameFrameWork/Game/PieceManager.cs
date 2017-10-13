@@ -126,7 +126,7 @@ namespace GFW
 			if(m_donePieceCount >= m_curPieceCount)
 			{
 				//胜利
-				ModuleManager.Instance.ShowModule(ModuleDef.ResultModule, null);
+				ModuleManager.Instance.ShowModule(ModuleDef.BattleResultModule, null);
 			}	
 		}
 			

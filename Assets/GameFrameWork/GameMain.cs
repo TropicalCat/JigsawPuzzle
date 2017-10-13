@@ -37,6 +37,6 @@ public class GameMain : MonoBehaviour
 		ModuleManager.Instance.CreateModule (ModuleDef.LoadingModule);
 		ModuleManager.Instance.CreateModule (ModuleDef.BattleModule);
 		ModuleManager.Instance.CreateModule (ModuleDef.QuitBattleModule);
-		ModuleManager.Instance.CreateModule (ModuleDef.ResultModule);
+		ModuleManager.Instance.CreateModule (ModuleDef.BattleResultModule);
 	}
 }

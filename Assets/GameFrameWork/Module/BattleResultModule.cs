@@ -6,7 +6,7 @@ using GE;
 
 namespace GFW
 {
-	public class ResultModule : BusinessModule
+	public class BattleResultModule : BusinessModule
 	{
 
 		protected override void Show(object arg)

@@ -23,7 +23,6 @@ namespace GFW
 		{
 			base.OnOpen (arg);
 
-
 			if (m_btnRestart != null)
 			{
 				m_btnRestart.onClick.AddListener(OnRestart);
@@ -63,12 +62,11 @@ namespace GFW
 
 		private void OnRestart()
 		{
-			var module = ModuleManager.Instance.GetModule(ModuleDef.ResultModule) as ResultModule;
+			var module = ModuleManager.Instance.GetModule(ModuleDef.BattleResultModule) as BattleResultModule;
 			if (module != null)
 			{
 				module.OnRestart();
 			}	
-			
 		}
 
 		private void OnNext()
@@ -77,7 +75,7 @@ namespace GFW
 
 		private void OnHome()
 		{
-			var module = ModuleManager.Instance.GetModule(ModuleDef.ResultModule) as ResultModule;
+			var module = ModuleManager.Instance.GetModule(ModuleDef.BattleResultModule) as BattleResultModule;
 			if (module != null)
 			{
 				module.OnHome();
