@@ -27,10 +27,11 @@ namespace GFW
 			UIManager.Instance.EnterMainPage ();
 		}
 
-
-
+		public void OnNext()
+		{
+			GameManager.Instance.StartNextBattle ();
+		}
 
 
 	}
-
 }

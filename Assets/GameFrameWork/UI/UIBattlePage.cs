@@ -56,16 +56,16 @@ namespace GFW
 			Sprite pieceImage = Resources.Load(pth, typeof(Sprite)) as Sprite;
 
 			Image image = gameObject.transform.Find ("LeftDown").Find ("Piece").GetComponent<Image> ();
-			image.sprite = Resources.Load(pth, typeof(Sprite)) as Sprite;
+			image.sprite = pieceImage;
 
 			image = gameObject.transform.Find ("LeftUp").Find ("Piece").GetComponent<Image> ();
-			image.sprite = Resources.Load(pth, typeof(Sprite)) as Sprite;
+			image.sprite = pieceImage;
 
 			image = gameObject.transform.Find ("RightDown").Find ("Piece").GetComponent<Image> ();
-			image.sprite = Resources.Load(pth, typeof(Sprite)) as Sprite;
+			image.sprite = pieceImage;
 
 			image = gameObject.transform.Find ("RightUp").Find ("Piece").GetComponent<Image> ();
-			image.sprite = Resources.Load(pth, typeof(Sprite)) as Sprite;
+			image.sprite = pieceImage;
 
 			image = gameObject.transform.Find ("PieceZone").GetComponent<Image> ();
 			image.sprite = pieceImage;

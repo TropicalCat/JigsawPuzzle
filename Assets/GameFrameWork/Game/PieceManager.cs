@@ -13,7 +13,6 @@ namespace GFW
 		private int m_curPieceCount;	//当前碎片总数量
 		private int m_donePieceCount;	//复位的碎片数量
 
-
 		public PieceManager()
 		{
 		}
