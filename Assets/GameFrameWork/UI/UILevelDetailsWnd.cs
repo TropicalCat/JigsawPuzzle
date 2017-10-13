@@ -86,10 +86,6 @@ namespace GFW
 				m_btnRevolve.onClick.RemoveAllListeners();
 			}
 			base.OnClose (arg);
-
-//			UIManager.Instance.CloseWindow (this);
-//			//销毁掉窗口
-//			Destroy (gameObject);
 		}
 
 		private void OnStart()
@@ -97,19 +93,29 @@ namespace GFW
 			var module = ModuleManager.Instance.GetModule(ModuleDef.LevelDetailsModule) as LevelDetailsModule;
 			if (module != null)
 			{
-				module.OnStartBattle (0,0);
+				module.OnStartBattle ();
 			}	
 		}
 
 		private void OnIncreasePiece()
 		{
-			PieceManager.Instance.IncreasePiece ();
+			var module = ModuleManager.Instance.GetModule(ModuleDef.LevelDetailsModule) as LevelDetailsModule;
+			if (module != null)
+			{
+				module.OnIncreasePiece ();
+			}	
+
 			pieceCount ();
 		}
 
 		private void OnReducePiece()
 		{
-			PieceManager.Instance.ReducePiece ();
+			var module = ModuleManager.Instance.GetModule(ModuleDef.LevelDetailsModule) as LevelDetailsModule;
+			if (module != null)
+			{
+				module.OnReducePiece ();
+			}	
+
 			pieceCount ();
 		}
 
@@ -123,7 +129,11 @@ namespace GFW
 
 		private void OnNormal()
 		{
-			PieceManager.Instance.Difficulty = false;
+			var module = ModuleManager.Instance.GetModule(ModuleDef.LevelDetailsModule) as LevelDetailsModule;
+			if (module != null)
+			{
+				module.OnNormal ();
+			}	
 			normalIcon ();
 		}
 
@@ -147,7 +157,11 @@ namespace GFW
 
 		private void OnRevolve()
 		{
-			PieceManager.Instance.Revolve = false;
+			var module = ModuleManager.Instance.GetModule(ModuleDef.LevelDetailsModule) as LevelDetailsModule;
+			if (module != null)
+			{
+				module.OnRevolve ();
+			}	
 			revolveIcon ();
 		}
 

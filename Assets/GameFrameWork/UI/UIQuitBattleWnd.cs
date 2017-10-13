@@ -30,15 +30,11 @@ namespace GFW
 			}
 
 			base.OnClose (arg);
-//			UIManager.Instance.CloseWindow (this);
-//			//销毁掉窗口
-//			Destroy (gameObject);
 		}
 
 
 		public void OnCancel()
 		{
-			//this.Close ();
 		}
 
 		public void OnConfirm()
@@ -54,7 +50,5 @@ namespace GFW
 
 
 	}
-
-
 }
 

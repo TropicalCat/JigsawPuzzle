@@ -29,7 +29,7 @@ namespace GFW
 			}
 			base.OnClose (arg);
 			//销毁掉窗口
-			Destroy (gameObject);
+			//Destroy (gameObject);
 		}
 
 		private void OnStart()

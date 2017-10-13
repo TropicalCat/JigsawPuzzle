@@ -24,7 +24,6 @@ namespace GFW
 			{
 				m_btnArtist.onClick.AddListener(OnArtist);
 			}
-
 			if (m_btnQuit != null) 
 			{
 				m_btnQuit.onClick.AddListener (OnQuitBattle);
@@ -46,7 +45,7 @@ namespace GFW
 
 			base.OnClose (arg);
 			//销毁掉窗口
-			Destroy (gameObject);
+			//Destroy (gameObject);
 		}
 			
 		void initPiece()
@@ -55,21 +54,14 @@ namespace GFW
 
 			Sprite pieceImage = Resources.Load(pth, typeof(Sprite)) as Sprite;
 
-			Image image = gameObject.transform.Find ("LeftDown").Find ("Piece").GetComponent<Image> ();
+			Image image = gameObject.transform.Find ("PieceZone").GetComponent<Image> ();
 			image.sprite = pieceImage;
 
-			image = gameObject.transform.Find ("LeftUp").Find ("Piece").GetComponent<Image> ();
-			image.sprite = pieceImage;
-
-			image = gameObject.transform.Find ("RightDown").Find ("Piece").GetComponent<Image> ();
-			image.sprite = pieceImage;
-
-			image = gameObject.transform.Find ("RightUp").Find ("Piece").GetComponent<Image> ();
-			image.sprite = pieceImage;
-
-			image = gameObject.transform.Find ("PieceZone").GetComponent<Image> ();
-			image.sprite = pieceImage;
-
+			for (int i = 0; i < PieceManager.Instance.PieceCount; i++) 
+			{
+				image = gameObject.transform.Find((i+1).ToString()).Find("Piece").GetComponent<Image>();
+				image.sprite = pieceImage;
+			}
 		}
 			
 		private void OnArtist()

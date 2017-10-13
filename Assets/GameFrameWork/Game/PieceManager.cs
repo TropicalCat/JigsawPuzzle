@@ -72,17 +72,17 @@ namespace GFW
 			switch (m_curPieceCount) 
 			{
 			case 4:
-				PieceCount = 9;
+				m_curPieceCount = 9;
 				break;
-			case 9:
-				PieceCount = 16;
-				break;
-			case 16:
-				PieceCount = 25;
-				break;
-			case 25:
-				PieceCount = 36;
-				break;
+//			case 9:
+//				m_curPieceCount = 16;
+//				break;
+//			case 16:
+//				m_curPieceCount = 25;
+//				break;
+//			case 25:
+//				m_curPieceCount = 36;
+//				break;
 			default:
 				break;
 			}
@@ -92,17 +92,17 @@ namespace GFW
 		{
 			switch (m_curPieceCount) 
 			{
-			case 36:
-				PieceCount = 25;
-				break;
-			case 25:
-				PieceCount = 16;
-				break;
-			case 16:
-				PieceCount = 9;
-				break;
+//			case 36:
+//				m_curPieceCount = 25;
+//				break;
+//			case 25:
+//				m_curPieceCount = 16;
+//				break;
+//			case 16:
+//				m_curPieceCount = 9;
+//				break;
 			case 9:
-				PieceCount = 4;
+				m_curPieceCount = 4;
 				break;
 			default:
 				break;

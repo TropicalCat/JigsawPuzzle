@@ -12,19 +12,34 @@ namespace GFW
 		protected override void Show(object arg)
 		{
 			base.Show (arg);
-			//string selectLevel = arg.ToString ();
 			UIManager.Instance.OpenWindow(UIDef.UILevelDetails);
 		}
 
-		public void OnStartBattle(int level, int difficulty)
+		public void OnStartBattle()
 		{
-			//ModuleManager.Instance.ShowModule(ModuleDef.BattleModule, level);	
-			PieceManager.Instance.PieceCount = 4;
 			ModuleManager.Instance.ShowModule (ModuleDef.LoadingModule);
 		}
+			
+		public void OnIncreasePiece()
+		{
+			PieceManager.Instance.IncreasePiece ();
+		}
+
+		public void OnReducePiece()
+		{
+			PieceManager.Instance.ReducePiece ();
+		}
+
+		public void OnNormal()
+		{
+			PieceManager.Instance.Difficulty = false;
+		}
+
+		public void OnRevolve()
+		{
+			PieceManager.Instance.Revolve = false;
+		}
+	
 	}
-
-
-
 }
 

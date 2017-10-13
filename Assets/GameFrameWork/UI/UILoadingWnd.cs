@@ -23,9 +23,6 @@ namespace GFW
 		protected override void OnClose(object arg = null)
 		{
 			base.OnClose (arg);
-//			UIManager.Instance.CloseWindow (this);
-//			//销毁掉窗口
-//			Destroy (gameObject);
 		}
 
 		private void LoadFinish()

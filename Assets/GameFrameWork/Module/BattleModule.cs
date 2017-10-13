@@ -7,14 +7,20 @@ namespace GFW
 {
 	public class BattleModule : BusinessModule
 	{
-
 		protected override void Show(object arg)
 		{
 			base.Show (arg);
-			UIManager.Instance.OpenPage(UIDef.UIBattleMaster);
-			if (null != arg) 
+
+			switch (PieceManager.Instance.PieceCount) 
 			{
-				//string s = arg.ToString();
+			case 4:
+				UIManager.Instance.OpenPage(UIDef.UIBattle4Master);
+				break;
+			case 9:
+				UIManager.Instance.OpenPage(UIDef.UIBattle9Master);
+				break;
+			default:
+				break;
 			}
 		}
 
