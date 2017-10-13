@@ -7,7 +7,7 @@ using GE;
 
 namespace GFW
 {
-	public class UISelectLevelPage : UIPage
+	public class UILevelPage : UIPage
 	{
 		public GameObject[] levelItems;
 		protected override void OnOpen(object arg = null)

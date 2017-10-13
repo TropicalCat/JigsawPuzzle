@@ -7,7 +7,7 @@ namespace GFW
 		//模块UI
 		public const string UIHome = "Home";
 
-		public const string UISelectLevel = "SelectLevel";
+		public const string UISelectLevel = "Level";
 		public const string UISelectDifficulty = "SelectDifficulty";
 		public const string UILoading = "Loading";
 
