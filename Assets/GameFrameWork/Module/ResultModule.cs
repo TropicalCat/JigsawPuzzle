@@ -12,7 +12,7 @@ namespace GFW
 		protected override void Show(object arg)
 		{
 			base.Show (arg);
-			UIManager.Instance.OpenPage(UIDef.UIResult);
+			UIManager.Instance.OpenPage(UIDef.UIBattleResult);
 			//string s = arg.ToString();
 		}
 

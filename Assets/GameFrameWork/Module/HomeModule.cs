@@ -19,7 +19,7 @@ namespace GFW
 		{
 			switch (name)
 			{
-			case ModuleDef.SelectLevelModule:
+			case ModuleDef.LevelModule:
 				ModuleManager.Instance.ShowModule(name, arg);
 				break;
 			default:

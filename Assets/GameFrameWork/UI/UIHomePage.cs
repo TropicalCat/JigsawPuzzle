@@ -37,7 +37,7 @@ namespace GFW
 			var module = ModuleManager.Instance.GetModule(ModuleDef.HomeModule) as HomeModule;
 			if (module != null)
 			{
-				module.OpenModule(ModuleDef.SelectLevelModule, null);
+				module.OpenModule(ModuleDef.LevelModule, null);
 			}	
 		}
 			

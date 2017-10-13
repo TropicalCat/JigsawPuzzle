@@ -10,7 +10,7 @@ namespace GE
         public const string LOG_TAG = "UIManager";
 
         public static string MainScene = "Main";
-		public static string MainPage = "SelectLevel";
+		public static string MainPage = "Level";
 
         
         class UIPageTrack

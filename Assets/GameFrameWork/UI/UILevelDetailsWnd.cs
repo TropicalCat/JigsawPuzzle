@@ -7,7 +7,7 @@ using GE;
 
 namespace GFW
 {
-	public class UISelectDifficultyPage:UIPage 
+	public class UILevelDetailsWnd : UIWindow 
 	{
 		[SerializeField]
 		private Button m_btnStart;
@@ -87,7 +87,7 @@ namespace GFW
 			}
 			base.OnClose (arg);
 		}
-			
+
 		private void OnStart()
 		{
 			var module = ModuleManager.Instance.GetModule(ModuleDef.SelectDifficultyModule) as SelectDifficultyModule;
@@ -96,7 +96,7 @@ namespace GFW
 				module.OnStartBattle (0,0);
 			}	
 		}
-			
+
 		private void OnIncreasePiece()
 		{
 			PieceManager.Instance.IncreasePiece ();

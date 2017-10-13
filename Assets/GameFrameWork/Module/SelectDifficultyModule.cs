@@ -13,7 +13,7 @@ namespace GFW
 		{
 			base.Show (arg);
 			//string selectLevel = arg.ToString ();
-			UIManager.Instance.OpenPage(UIDef.UISelectDifficulty);
+			UIManager.Instance.OpenWindow(UIDef.UILevelDetails);
 		}
 
 		public void OnStartBattle(int level, int difficulty)

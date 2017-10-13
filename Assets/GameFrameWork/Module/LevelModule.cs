@@ -5,12 +5,12 @@ using GE;
 
 namespace GFW
 {
-	public class SelectLevelModule : BusinessModule
+	public class LevelModule : BusinessModule
 	{
 		protected override void Show(object arg)
 		{
 			base.Show (arg);
-			UIManager.Instance.OpenPage(UIDef.UISelectLevel);
+			UIManager.Instance.OpenPage(UIDef.UILevelMaster);
 		}
 
 		public void OnSelectLevel(int level)
