@@ -10,9 +10,17 @@ namespace GFW
 	public class UILevelPage : UIPage
 	{
 		public GameObject[] levelItems;
+
+		[SerializeField]
+		private Button m_btnBack;
+
 		protected override void OnOpen(object arg = null)
 		{
 			base.OnOpen (arg);
+			if (m_btnBack != null)
+			{
+				m_btnBack.onClick.AddListener(OnBack);
+			}
 			initLevel ();
 		}
 
@@ -42,6 +50,10 @@ namespace GFW
 				btnLevel.onClick.RemoveAllListeners ();
 			}
 
+			if (m_btnBack != null)
+			{
+				m_btnBack.onClick.RemoveAllListeners();
+			}
 			base.OnClose (arg);
 		}
 
@@ -51,6 +63,15 @@ namespace GFW
 			if (module != null)
 			{
 				module.OnSelectLevel(int.Parse(gameObject.name));
+			}
+		}
+
+		public void OnBack()
+		{
+			var module = ModuleManager.Instance.GetModule(ModuleDef.LevelModule) as LevelModule;
+			if (module != null)
+			{
+				module.OnBack();
 			}
 		}
 	}

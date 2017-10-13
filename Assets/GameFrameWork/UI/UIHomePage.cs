@@ -28,8 +28,6 @@ namespace GFW
 				m_btnStart.onClick.RemoveAllListeners();
 			}
 			base.OnClose (arg);
-			//销毁掉窗口
-			//Destroy (gameObject);
 		}
 
 		private void OnStart()

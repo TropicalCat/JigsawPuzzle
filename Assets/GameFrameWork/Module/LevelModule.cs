@@ -19,6 +19,11 @@ namespace GFW
 			PieceManager.Instance.SetLevel (level);
 			ModuleManager.Instance.ShowModule(ModuleDef.LevelDetailsModule, level);	
 		}
+
+		public void OnBack()
+		{
+			ModuleManager.Instance.ShowModule (ModuleDef.HomeModule, null);
+		}
 	}
 }
 
