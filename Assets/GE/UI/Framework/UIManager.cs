@@ -19,16 +19,16 @@ namespace GE
             public string scene;
         }
 
-
-        private Stack<UIPageTrack> m_pageTrackStack;
+        private Stack<UIPageTrack> m_pageTrackStack;// page栈
         private UIPageTrack m_currentPage;
         private Action<string> sceneLoaded;
-        private List<UIPanel> m_listLoadedPanel; 
+        private List<UIPanel> m_listLoadedPanel; // 一个page，及其打开的若干window,widget
 
         public UIManager()
         {
             m_pageTrackStack = new Stack<UIPageTrack>();
             m_listLoadedPanel = new List<UIPanel>();
+			m_currentPage = null;
         }
 
         /// <summary>
@@ -114,15 +114,16 @@ namespace GE
         {
             for (int i = 0; i < m_listLoadedPanel.Count; i++)
             {
-                if (m_listLoadedPanel[i].IsOpen)
-                {
-                    
-
-					//UIRoot.RemoveChild (m_listLoadedPanel[i]);
-					m_listLoadedPanel[i].Close();
-                }
-				m_listLoadedPanel.Clear ();
+				if (m_listLoadedPanel [i] != null) 
+				{
+					if (m_listLoadedPanel[i].IsOpen)
+					{
+						m_listLoadedPanel[i].Close();
+					}
+					GameObject.Destroy (m_listLoadedPanel[i].gameObject);
+				}
             }
+			m_listLoadedPanel.Clear ();
         }
 
         //=======================================================================
@@ -135,14 +136,14 @@ namespace GE
         {
             m_pageTrackStack.Clear();
 
-			for (int i = 0; i < m_listLoadedPanel.Count; i++)
-			{
-				if (m_listLoadedPanel[i].IsOpen)
-				{
-					m_listLoadedPanel[i].Close();
-				}
-			}
-			m_listLoadedPanel.Clear ();
+//			for (int i = 0; i < m_listLoadedPanel.Count; i++)
+//			{
+//				if (m_listLoadedPanel[i].IsOpen)
+//				{
+//					m_listLoadedPanel[i].Close();
+//				}
+//			}
+//			m_listLoadedPanel.Clear ();
 
             OpenPageWorker(MainScene, MainPage, null);
         }
@@ -237,17 +238,17 @@ namespace GE
             return ui;
         }
 
-		public void CloseWindow(UIWindow wnd)
-		{
-			if (wnd != null) 
-			{
-				if (wnd.IsOpen)
-				{
-					wnd.Close ();
-				}
-				m_listLoadedPanel.Remove (wnd);
-			}
-		}
+//		public void CloseWindow(UIWindow wnd)
+//		{
+//			if (wnd != null) 
+//			{
+//				if (wnd.IsOpen)
+//				{
+//					wnd.Close ();
+//				}
+//				m_listLoadedPanel.Remove (wnd);
+//			}
+//		}
 
 
         #endregion

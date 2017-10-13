@@ -105,10 +105,7 @@ namespace GE
 			{
 				return;
 			}
-
-		
 			//child.transform.SetParent (null, false);
-
 			root.transform.DetachChildren ();
 		}
 

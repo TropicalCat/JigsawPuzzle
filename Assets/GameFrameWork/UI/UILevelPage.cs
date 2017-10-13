@@ -41,6 +41,8 @@ namespace GFW
 				Button btnLevel = levelItems [i].GetComponent<Button> ();
 				btnLevel.onClick.RemoveAllListeners ();
 			}
+
+			base.OnClose (arg);
 		}
 
 		private void OnLevelClick(GameObject gameObject)

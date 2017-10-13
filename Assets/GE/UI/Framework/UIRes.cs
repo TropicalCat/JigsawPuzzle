@@ -19,11 +19,7 @@ namespace GE
         {
             GameObject asset = (GameObject)Resources.Load(UIResRoot + name);
             return asset;
-
-
         }
-
-
 
 
     }
