@@ -33,7 +33,7 @@ public class GameMain : MonoBehaviour
 	{
 		ModuleManager.Instance.CreateModule (ModuleDef.HomeModule);
 		ModuleManager.Instance.CreateModule (ModuleDef.LevelModule);
-		ModuleManager.Instance.CreateModule (ModuleDef.SelectDifficultyModule);
+		ModuleManager.Instance.CreateModule (ModuleDef.LevelDetailsModule);
 		ModuleManager.Instance.CreateModule (ModuleDef.LoadingModule);
 		ModuleManager.Instance.CreateModule (ModuleDef.BattleModule);
 		ModuleManager.Instance.CreateModule (ModuleDef.QuitBattleModule);

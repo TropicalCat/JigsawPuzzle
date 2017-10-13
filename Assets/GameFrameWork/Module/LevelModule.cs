@@ -17,7 +17,7 @@ namespace GFW
 		{
 			PieceManager.Instance.Clear ();
 			PieceManager.Instance.SetLevel (level);
-			ModuleManager.Instance.ShowModule(ModuleDef.SelectDifficultyModule, level);	
+			ModuleManager.Instance.ShowModule(ModuleDef.LevelDetailsModule, level);	
 		}
 	}
 }

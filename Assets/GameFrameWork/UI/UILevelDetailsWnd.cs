@@ -86,11 +86,15 @@ namespace GFW
 				m_btnRevolve.onClick.RemoveAllListeners();
 			}
 			base.OnClose (arg);
+
+			UIManager.Instance.CloseWindow (this);
+			//销毁掉窗口
+			Destroy (gameObject);
 		}
 
 		private void OnStart()
 		{
-			var module = ModuleManager.Instance.GetModule(ModuleDef.SelectDifficultyModule) as SelectDifficultyModule;
+			var module = ModuleManager.Instance.GetModule(ModuleDef.LevelDetailsModule) as LevelDetailsModule;
 			if (module != null)
 			{
 				module.OnStartBattle (0,0);

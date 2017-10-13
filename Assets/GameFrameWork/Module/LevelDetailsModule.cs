@@ -6,7 +6,7 @@ using GE;
 namespace GFW
 {
 
-	public class SelectDifficultyModule : BusinessModule
+	public class LevelDetailsModule : BusinessModule
 	{
 		
 		protected override void Show(object arg)
