@@ -68,6 +68,7 @@ namespace GE
         {
             this.Log("OnBtnClose()");
             Close(0);
+			GFW.AudioManager.Instance.PlayClick ();
         }
 
 

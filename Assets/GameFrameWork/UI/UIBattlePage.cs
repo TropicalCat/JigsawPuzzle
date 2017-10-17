@@ -68,6 +68,7 @@ namespace GFW
 		{
 			GameObject obj = gameObject.transform.Find ("PieceZone").gameObject;
 			showArtist (!obj.activeSelf);
+			AudioManager.Instance.PlayClick ();
 		}
 			
 		private void showArtist(bool bShow)
@@ -96,7 +97,8 @@ namespace GFW
 			if (module != null)
 			{
 				module.OnQuitBattle();
-			}	
+			}
+			AudioManager.Instance.PlayClick ();
 		}
 
 
