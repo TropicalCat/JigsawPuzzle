@@ -43,8 +43,8 @@ namespace GFW
 			if (module != null)
 			{
 				module.OnQuitBattle();
-			}	
-			
+			}
+			AudioManager.Instance.PlayClick ();
 		}
 
 

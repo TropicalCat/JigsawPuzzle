@@ -64,6 +64,7 @@ namespace GFW
 			{
 				module.OnSelectLevel(int.Parse(gameObject.name));
 			}
+			AudioManager.Instance.PlayClick ();
 		}
 
 		public void OnBack()
@@ -73,6 +74,7 @@ namespace GFW
 			{
 				module.OnBack();
 			}
+			AudioManager.Instance.PlayClick ();
 		}
 	}
 }

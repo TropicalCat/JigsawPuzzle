@@ -189,6 +189,7 @@ namespace GE
             {
                 EnterMainPage();
             }
+			GFW.AudioManager.Instance.PlayClick ();
         }
 
         private void OpenPageWorker(string scene, string page, object arg)

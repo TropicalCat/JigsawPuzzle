@@ -37,8 +37,7 @@ namespace GFW
 			{
 				module.OpenModule(ModuleDef.LevelModule, null);
 			}	
-
-			AudioManager.Instance.PlayBtnClick ();
+			AudioManager.Instance.PlayClick ();
 		}
 			
 

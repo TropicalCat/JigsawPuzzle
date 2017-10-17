@@ -7,6 +7,7 @@ namespace GFW
 {
 	public class GameManager : ServiceModule<GameManager>
 	{
+		int m_maxLevel = 10;	//最大关卡
 		public GameManager()
 		{
 		}
@@ -46,9 +47,18 @@ namespace GFW
 		{
 		}
 
-		//
+		//下一个关卡
 		public void StartNextBattle()
 		{
+			if (PieceManager.Instance.GetCurLevel () < m_maxLevel) 
+			{
+				PieceManager.Instance.SetLevel (PieceManager.Instance.GetCurLevel () + 1);
+				ModuleManager.Instance.ShowModule (ModuleDef.BattleModule);
+			} 
+			else
+			{
+				// 新关卡未开放
+			}
 		}
 
 	}

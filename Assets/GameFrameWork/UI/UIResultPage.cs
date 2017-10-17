@@ -66,11 +66,18 @@ namespace GFW
 			if (module != null)
 			{
 				module.OnRestart();
-			}	
+			}
+			AudioManager.Instance.PlayClick ();
 		}
 
 		private void OnNext()
 		{
+			var module = ModuleManager.Instance.GetModule(ModuleDef.BattleResultModule) as BattleResultModule;
+			if (module != null)
+			{
+				module.OnNext();
+			}
+			AudioManager.Instance.PlayClick ();
 		}
 
 		private void OnHome()
@@ -79,7 +86,8 @@ namespace GFW
 			if (module != null)
 			{
 				module.OnHome();
-			}	
+			}
+			AudioManager.Instance.PlayClick ();
 		}
 
 	

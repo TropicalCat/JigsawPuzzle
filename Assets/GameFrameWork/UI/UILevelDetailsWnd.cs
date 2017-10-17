@@ -94,7 +94,8 @@ namespace GFW
 			if (module != null)
 			{
 				module.OnStartBattle ();
-			}	
+			}
+			AudioManager.Instance.GameGo ();
 		}
 
 		private void OnIncreasePiece()
@@ -106,6 +107,7 @@ namespace GFW
 			}	
 
 			pieceCount ();
+			AudioManager.Instance.PlayClick ();
 		}
 
 		private void OnReducePiece()
@@ -117,6 +119,7 @@ namespace GFW
 			}	
 
 			pieceCount ();
+			AudioManager.Instance.PlayClick ();
 		}
 
 		private void pieceCount()
@@ -135,6 +138,7 @@ namespace GFW
 				module.OnNormal ();
 			}	
 			normalIcon ();
+			AudioManager.Instance.PlayClick ();
 		}
 
 		private void normalIcon()
@@ -163,6 +167,7 @@ namespace GFW
 				module.OnRevolve ();
 			}	
 			revolveIcon ();
+			AudioManager.Instance.PlayClick ();
 		}
 
 		private void revolveIcon()

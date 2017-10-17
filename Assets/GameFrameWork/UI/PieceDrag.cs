@@ -85,6 +85,8 @@ public class PieceDrag :MonoBehaviour,
 			imgRect.transform.SetSiblingIndex(100);
 		}
 		bDown = true;
+
+		AudioManager.Instance.PieceUp ();
 	}
 
 	//当鼠标拖动时调用   对应接口 IDragHandler
@@ -125,6 +127,8 @@ public class PieceDrag :MonoBehaviour,
 		{
 			imgRect.localScale = imgReduceScale;
 		}
+
+		AudioManager.Instance.PieceDown ();
 	}
 
 	//当鼠标结束拖动时调用   对应接口  IEndDragHandler
