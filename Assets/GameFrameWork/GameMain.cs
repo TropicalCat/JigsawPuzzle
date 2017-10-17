@@ -28,6 +28,7 @@ public class GameMain : MonoBehaviour
 		UIManager.Instance.Init ("Prefab/UI/");
 		GameManager.Instance.Init ();
 		PieceManager.Instance.Init ();
+		AudioManager.Instance.Init ();
 	}
 
 	private void InitBusiness()
