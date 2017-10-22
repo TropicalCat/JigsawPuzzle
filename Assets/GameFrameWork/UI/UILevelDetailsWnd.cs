@@ -138,6 +138,7 @@ namespace GFW
 				module.OnNormal ();
 			}	
 			normalIcon ();
+			revolveIcon ();
 			AudioManager.Instance.PlayClick ();
 		}
 
@@ -166,6 +167,7 @@ namespace GFW
 			{
 				module.OnRevolve ();
 			}	
+			normalIcon ();
 			revolveIcon ();
 			AudioManager.Instance.PlayClick ();
 		}

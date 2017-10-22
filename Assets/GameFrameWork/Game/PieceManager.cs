@@ -20,7 +20,7 @@ namespace GFW
 		public void Init()
 		{
 			m_curLevel=0;		//当前关卡	
-			m_isNormal=false;
+			m_isNormal = true;
 			m_isRevolve = false;
 			m_curPieceCount = 4;
 			m_donePieceCount = 0;
@@ -33,7 +33,7 @@ namespace GFW
 		public void Clear()
 		{
 			m_curLevel=0;		//当前关卡	
-			m_isNormal=false;
+			m_isNormal = true;
 			m_isRevolve = false;
 			m_curPieceCount = 4;
 			m_donePieceCount = 0;
@@ -52,13 +52,13 @@ namespace GFW
 		public bool Difficulty
 		{
 			get{ return m_isNormal;}
-			set{ m_isNormal = !m_isNormal;}
+			set{ m_isRevolve = false; m_isNormal = true; }
 		}
 
 		public bool Revolve
 		{
 			get{ return m_isRevolve;}
-			set{ m_isRevolve = !m_isRevolve;}
+			set{ m_isRevolve = true; m_isNormal = false; }
 		}
 			
 		public int PieceCount

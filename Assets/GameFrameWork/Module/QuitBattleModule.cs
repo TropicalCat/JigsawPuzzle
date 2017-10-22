@@ -42,12 +42,23 @@ namespace GFW
 			}
 		}
 
+		//随机other关卡
 		public int RandomLevel()
 		{
 			int index = UnityEngine.Random.Range (0, m_otherLevels.Count - 1);
 			int randomLevel = m_otherLevels [index];
 			m_otherLevels.Remove (index);
 			return randomLevel;
+		}
+
+
+	
+		public void OnSelectLevel(int level)
+		{
+			//UIManager.Instance.EnterMainPage ();
+			PieceManager.Instance.ClearPiece ();
+			PieceManager.Instance.SetLevel (level);
+			GameManager.Instance.StartBattle ();
 		}
 			
 	}

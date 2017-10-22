@@ -78,11 +78,11 @@ namespace GFW
 
 		private void OnLevelClick(GameObject gameObject)
 		{
-//			var module = ModuleManager.Instance.GetModule(ModuleDef.LevelModule) as LevelModule;
-//			if (module != null)
-//			{
-//				module.OnSelectLevel(int.Parse(gameObject.name));
-//			}
+			var module = ModuleManager.Instance.GetModule(ModuleDef.QuitBattleModule) as QuitBattleModule;
+			if (module != null)
+			{
+				module.OnSelectLevel(int.Parse(gameObject.name));
+			}
 			AudioManager.Instance.PlayClick ();
 		}
 

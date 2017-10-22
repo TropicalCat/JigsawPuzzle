@@ -52,6 +52,7 @@ namespace GFW
 		{
 			if (PieceManager.Instance.GetCurLevel () < m_maxLevel) 
 			{
+				PieceManager.Instance.ClearPiece ();
 				PieceManager.Instance.SetLevel (PieceManager.Instance.GetCurLevel () + 1);
 				ModuleManager.Instance.ShowModule (ModuleDef.BattleModule);
 			} 
