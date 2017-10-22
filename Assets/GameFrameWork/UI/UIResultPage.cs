@@ -35,6 +35,15 @@ namespace GFW
 			{
 				m_btnHome.onClick.AddListener(OnHome);
 			}
+
+			initPiece ();
+		}
+
+		void initPiece()
+		{
+			string pth = PieceManager.Instance.GetCurIllustration ();
+			Image image = gameObject.transform.Find ("Preview").GetComponent<Image> ();
+			image.sprite = Resources.Load(pth, typeof(Sprite)) as Sprite;
 		}
 
 		protected override void OnClose(object arg = null)
