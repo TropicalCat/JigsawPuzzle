@@ -61,5 +61,10 @@ namespace GFW
 			}
 		}
 
+		public int GetMaxLevel()
+		{
+			return m_maxLevel;
+		}
+
 	}
 }
