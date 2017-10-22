@@ -8,6 +8,7 @@ namespace GFW
 	public class GameManager : ServiceModule<GameManager>
 	{
 		int m_maxLevel = 10;	//最大关卡
+		float m_battleTime = 0f;//
 		public GameManager()
 		{
 		}
@@ -27,6 +28,7 @@ namespace GFW
 		//开始拼图
 		public void StartBattle()
 		{
+			m_battleTime = Time.time;
 			ModuleManager.Instance.ShowModule(ModuleDef.BattleModule);
 		}
 
@@ -34,7 +36,7 @@ namespace GFW
 		public void RestartBattle()
 		{
 			PieceManager.Instance.ClearPiece ();
-			ModuleManager.Instance.ShowModule(ModuleDef.BattleModule);
+			StartBattle ();
 		}
 
 		//完成拼图
@@ -54,7 +56,7 @@ namespace GFW
 			{
 				PieceManager.Instance.ClearPiece ();
 				PieceManager.Instance.SetLevel (PieceManager.Instance.GetCurLevel () + 1);
-				ModuleManager.Instance.ShowModule (ModuleDef.BattleModule);
+				StartBattle ();
 			} 
 			else
 			{
@@ -65,6 +67,11 @@ namespace GFW
 		public int GetMaxLevel()
 		{
 			return m_maxLevel;
+		}
+
+		public float GetBattleStartTime()
+		{
+			return m_battleTime;
 		}
 
 	}

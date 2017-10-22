@@ -5,7 +5,10 @@ using GE;
 
 namespace GFW
 {
-	public class UILoadingWnd : UIWindow
+	/// <summary>
+	/// 因为一个battle打不开battle，修改loading为page。
+	/// </summary>
+	public class UILoadingWnd : UIPage
 	{
 		protected override void OnOpen(object arg = null)
 		{

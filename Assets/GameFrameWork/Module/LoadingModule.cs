@@ -10,7 +10,7 @@ namespace GFW
 		protected override void Show(object arg)
 		{
 			base.Show (arg);
-			UIManager.Instance.OpenWindow(UIDef.UILoading);
+			UIManager.Instance.OpenPage(UIDef.UILoading);
 		}
 			
 		//加载完成

@@ -24,6 +24,9 @@ namespace GFW
 		[SerializeField]
 		private Button m_btnRevolve;
 
+		[SerializeField]
+		private Button m_btnGO;
+
 
 		protected override void OnOpen(object arg = null)
 		{
@@ -47,6 +50,10 @@ namespace GFW
 			if (m_btnRevolve != null)
 			{
 				m_btnRevolve.onClick.AddListener(OnRevolve);
+			}
+			if (m_btnGO != null) 
+			{
+				m_btnGO.onClick.AddListener(OnStart);
 			}
 
 			initPiece ();
@@ -84,6 +91,10 @@ namespace GFW
 			if (m_btnRevolve != null)
 			{
 				m_btnRevolve.onClick.RemoveAllListeners();
+			}
+			if (m_btnGO != null)
+			{
+				m_btnGO.onClick.RemoveAllListeners();
 			}
 			base.OnClose (arg);
 		}

@@ -46,6 +46,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\GE\Common\Singleton.cs" />
      <Compile Include="Assets\GE\Logger\Debuger.cs" />
      <Compile Include="Assets\GE\Logger\DebugerExtension.cs" />
      <Compile Include="Assets\GE\Module\Framework\BusinessModule.cs" />
@@ -54,7 +55,44 @@
      <Compile Include="Assets\GE\Module\Framework\Module.cs" />
      <Compile Include="Assets\GE\Module\Framework\ModuleManager.cs" />
      <Compile Include="Assets\GE\Module\Framework\ServiceModule.cs" />
+     <Compile Include="Assets\GE\UI\Framework\UIManager.cs" />
+     <Compile Include="Assets\GE\UI\Framework\UIPage.cs" />
+     <Compile Include="Assets\GE\UI\Framework\UIPanel.cs" />
+     <Compile Include="Assets\GE\UI\Framework\UIRes.cs" />
+     <Compile Include="Assets\GE\UI\Framework\UIRoot.cs" />
+     <Compile Include="Assets\GE\UI\Framework\UIUtils.cs" />
+     <Compile Include="Assets\GE\UI\Framework\UIWidget.cs" />
+     <Compile Include="Assets\GE\UI\Framework\UIWindow.cs" />
+     <Compile Include="Assets\GE\Unity\AppPrefs.cs" />
+     <Compile Include="Assets\GE\Unity\DelayInvoker.cs" />
+     <Compile Include="Assets\GE\Unity\GameObjectUtils.cs" />
+     <Compile Include="Assets\GE\Unity\MonoHelper.cs" />
+     <Compile Include="Assets\GE\Unity\MonoSingleton.cs" />
+     <Compile Include="Assets\GE\Unity\NetCheck.cs" />
+     <Compile Include="Assets\GE\Unity\SetPropertyAttribute.cs" />
+     <Compile Include="Assets\GE\Unity\VectorExtensions.cs" />
+     <Compile Include="Assets\GameFrameWork\Game\AssetManager.cs" />
+     <Compile Include="Assets\GameFrameWork\Game\AudioManager.cs" />
+     <Compile Include="Assets\GameFrameWork\Game\GameManager.cs" />
+     <Compile Include="Assets\GameFrameWork\Game\PieceManager.cs" />
      <Compile Include="Assets\GameFrameWork\GameMain.cs" />
+     <Compile Include="Assets\GameFrameWork\Module\BattleModule.cs" />
+     <Compile Include="Assets\GameFrameWork\Module\BattleResultModule.cs" />
+     <Compile Include="Assets\GameFrameWork\Module\HomeModule.cs" />
+     <Compile Include="Assets\GameFrameWork\Module\LevelDetailsModule.cs" />
+     <Compile Include="Assets\GameFrameWork\Module\LevelModule.cs" />
+     <Compile Include="Assets\GameFrameWork\Module\LoadingModule.cs" />
+     <Compile Include="Assets\GameFrameWork\Module\QuitBattleModule.cs" />
+     <Compile Include="Assets\GameFrameWork\ModuleDef.cs" />
+     <Compile Include="Assets\GameFrameWork\UI\PieceDrag.cs" />
+     <Compile Include="Assets\GameFrameWork\UI\UIBattlePage.cs" />
+     <Compile Include="Assets\GameFrameWork\UI\UIHomePage.cs" />
+     <Compile Include="Assets\GameFrameWork\UI\UILevelDetailsWnd.cs" />
+     <Compile Include="Assets\GameFrameWork\UI\UILevelPage.cs" />
+     <Compile Include="Assets\GameFrameWork\UI\UILoadingWnd.cs" />
+     <Compile Include="Assets\GameFrameWork\UI\UIQuitBattleWnd.cs" />
+     <Compile Include="Assets\GameFrameWork\UI\UIResultPage.cs" />
+     <Compile Include="Assets\GameFrameWork\UIDef.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

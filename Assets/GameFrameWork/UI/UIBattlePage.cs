@@ -15,6 +15,17 @@ namespace GFW
 		[SerializeField]
 		private Button m_btnQuit;
 
+
+
+		Image m_image_H;
+		Image m_image_h;
+		Image m_image_M;
+		Image m_image_m;
+		Image m_image_S;
+		Image m_image_s;
+
+
+
 		protected override void OnOpen(object arg = null)
 		{
 			base.OnOpen (arg);
@@ -30,6 +41,13 @@ namespace GFW
 			}
 
 			showArtist (false);
+
+			m_image_H = gameObject.transform.Find ("Time/H").GetComponent<Image>();
+			m_image_h = gameObject.transform.Find ("Time/h").GetComponent<Image>();
+			m_image_M = gameObject.transform.Find ("Time/M").GetComponent<Image>();
+			m_image_m = gameObject.transform.Find ("Time/m").GetComponent<Image>();
+			m_image_S = gameObject.transform.Find ("Time/S").GetComponent<Image>();
+			m_image_s = gameObject.transform.Find ("Time/s").GetComponent<Image>();
 		}
 
 		protected override void OnClose(object arg = null)
@@ -63,7 +81,32 @@ namespace GFW
 				image.sprite = pieceImage;
 			}
 		}
-			
+
+		// Update is called once per frame
+		void Update () 
+		{
+			var module = ModuleManager.Instance.GetModule(ModuleDef.BattleModule) as BattleModule;
+			if (module != null)
+			{
+				module.CalculateTime();
+
+
+				int hh = module.GetHH ();
+				m_image_H.sprite = AssetManager.Instance.GetNumberSprite ("Number"+ (hh/10));
+				m_image_h.sprite = AssetManager.Instance.GetNumberSprite ("Number"+ (hh%10));
+				int mm = module.GetMM ();
+				m_image_M.sprite = AssetManager.Instance.GetNumberSprite ("Number"+ (mm/10));
+				m_image_m.sprite = AssetManager.Instance.GetNumberSprite ("Number"+ (mm%10));
+				int ss = module.GetSS ();
+				m_image_S.sprite = AssetManager.Instance.GetNumberSprite ("Number"+ (ss/10));
+				m_image_s.sprite = AssetManager.Instance.GetNumberSprite ("Number"+ (ss%10));
+
+
+			}
+		}
+
+
+
 		private void OnArtist()
 		{
 			GameObject obj = gameObject.transform.Find ("PieceZone").gameObject;

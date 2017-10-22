@@ -47,18 +47,20 @@ namespace GFW
 		{
 			int index = UnityEngine.Random.Range (0, m_otherLevels.Count - 1);
 			int randomLevel = m_otherLevels [index];
-			m_otherLevels.Remove (index);
+			m_otherLevels.Remove (randomLevel);
 			return randomLevel;
 		}
 
-
-	
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="level">Level.</param>
 		public void OnSelectLevel(int level)
 		{
-			//UIManager.Instance.EnterMainPage ();
 			PieceManager.Instance.ClearPiece ();
 			PieceManager.Instance.SetLevel (level);
-			GameManager.Instance.StartBattle ();
+			//GameManager.Instance.StartBattle ();
+			ModuleManager.Instance.ShowModule (ModuleDef.LoadingModule);
 		}
 			
 	}

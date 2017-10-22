@@ -25,6 +25,7 @@ public class GameMain : MonoBehaviour
 	private void InitServices()
 	{
 		ModuleManager.Instance.Init ("GFW");
+		AssetManager.Instance.Init ();
 		UIManager.Instance.Init ("Prefab/UI/");
 		GameManager.Instance.Init ();
 		PieceManager.Instance.Init ();
