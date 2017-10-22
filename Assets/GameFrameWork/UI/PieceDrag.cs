@@ -125,6 +125,12 @@ public class PieceDrag :MonoBehaviour,
 		} 
 		else
 		{
+			if (imgRect.anchoredPosition.y >= -600) 
+			{
+				imgRect.anchoredPosition = new Vector2 (targetPos.x + UnityEngine.Random.Range(-256, 256),   UnityEngine.Random.Range(-600,-800));
+			}
+
+
 			imgRect.localScale = imgReduceScale;
 		}
 
