@@ -8,7 +8,7 @@ using UnityEngine.GameFramework;
 
 namespace com.fanxing.Manager
 {
-	public class TankIAPManager : ManagerBase, IStoreListener 
+	public class TankIAPManager : ManagerBase, IStoreListener
 	{
 
 		private IStoreController m_StoreController = null; // The Unity Purchasing system.
@@ -18,25 +18,25 @@ namespace com.fanxing.Manager
 
 
 
-		// Product identifiers for all products capable of being purchased: 
-		// "convenience" general identifiers for use with Purchasing, and their store-specific identifier 
-		// counterparts for use with and outside of Unity Purchasing. Define store-specific identifiers 
+		// Product identifiers for all products capable of being purchased:
+		// "convenience" general identifiers for use with Purchasing, and their store-specific identifier
+		// counterparts for use with and outside of Unity Purchasing. Define store-specific identifiers
 		// also on each platform's publisher dashboard (iTunes Connect, Google Play Developer Console, etc.)
 
 		// General product identifiers for the consumable, non-consumable, and subscription products.
-		// Use these handles in the code to reference which product to purchase. Also use these values 
-		// when defining the Product Identifiers on the store. Except, for illustration purposes, the 
+		// Use these handles in the code to reference which product to purchase. Also use these values
+		// when defining the Product Identifiers on the store. Except, for illustration purposes, the
 		// kProductIDSubscription - it has custom Apple and Google identifiers. We declare their store-
 		// specific mapping to Unity Purchasing's AddProduct, below.
-		public static string kProductIDConsumable =    "consumable";   
+		public static string kProductIDConsumable =    "consumable";
 		public static string kProductIDNonConsumable = "nonconsumable";
-		public static string kProductIDSubscription =  "subscription"; 
+		public static string kProductIDSubscription =  "subscription";
 
 		// Apple App Store-specific product identifier for the subscription product.
 		private static string kProductNameAppleSubscription =  "com.unity3d.subscription.new";
 
 		// Google Play Store-specific product identifier subscription product.
-		private static string kProductNameGooglePlaySubscription =  "com.unity3d.subscription.original"; 
+		private static string kProductNameGooglePlaySubscription =  "com.unity3d.subscription.original";
 
 
 		public TankIAPManager()
@@ -48,7 +48,7 @@ namespace com.fanxing.Manager
 				InitializePurchasing();
 			}
 		}
-			
+
 		public void InitializePurchasing()
 		{
 			// If we have already connected to Purchasing ...
@@ -67,10 +67,10 @@ namespace com.fanxing.Manager
 				});
 
 
-			// Kick off the remainder of the set-up with an asynchrounous call, passing the configuration 
+			// Kick off the remainder of the set-up with an asynchrounous call, passing the configuration
 			// and this class' instance. Expect a response either in OnInitialized or OnInitializeFailed.
 			UnityPurchasing.Initialize(this, builder);
-			
+
 		}
 
 
@@ -80,7 +80,7 @@ namespace com.fanxing.Manager
 			return m_StoreController != null && m_StoreExtensionProvider != null;
 		}
 
-		//  
+		//
 		// --- IStoreListener
 		//
 
@@ -89,6 +89,7 @@ namespace com.fanxing.Manager
 		/// </summary>
 		public void OnInitialized (IStoreController controller, IExtensionProvider extensions)
 		{
+			//初始化工程
 			// Purchasing has succeeded initializing. Collect our Purchasing references.
 			Debug.Log("OnInitialized: PASS");
 
@@ -97,7 +98,7 @@ namespace com.fanxing.Manager
 			// Store specific subsystem, for accessing device-specific store features.
 			this.m_StoreExtensionProvider = extensions;
 		}
-			
+
 		/// <summary>
 		/// Called when Unity IAP encounters an unrecoverable initialization error.
 		///
@@ -106,11 +107,13 @@ namespace com.fanxing.Manager
 		/// </summary>
 		public void OnInitializeFailed (InitializationFailureReason error)
 		{
+			//初始化失败
+
 
 			// Purchasing set-up has not succeeded. Check error for reason. Consider sharing this reason with the user.
 			Debug.Log("OnInitializeFailed InitializationFailureReason:" + error);
 
-			foreach (var product in m_StoreController.products.all) 
+			foreach (var product in m_StoreController.products.all)
 			{
 				Debug.Log (product.metadata.localizedTitle);
 				Debug.Log (product.metadata.localizedDescription);
@@ -121,68 +124,68 @@ namespace com.fanxing.Manager
 
 
 		////////////////////////
-		/// 
+		///
 		/// 购买
-		/// 
+		///
 		/// ////////////////////
-		/// 
-		/// 
-		// Restore purchases previously made by this customer. Some platforms automatically restore purchases, like Google. 
+		///
+		///
+		// Restore purchases previously made by this customer. Some platforms automatically restore purchases, like Google.
 		// Apple currently requires explicit purchase restoration for IAP, conditionally displaying a password prompt.
-		public void RestorePurchases()  
-		{  
-			if (!IsInitialized())  
-			{  
-				Debug.Log("RestorePurchases FAIL. Not initialized.");  
-				return;  
-			}  
-			if (Application.platform == RuntimePlatform.IPhonePlayer ||   
-				Application.platform == RuntimePlatform.OSXPlayer)  
-			{  
-				Debug.Log("RestorePurchases started ...");  
-				var apple = m_StoreExtensionProvider.GetExtension<IAppleExtensions>();  
-				apple.RestoreTransactions((result) => {  
-					//返回一个bool值，如果成功，则会多次调用支付回调，然后根据支付回调中的参数得到商品id，最后做处理(ProcessPurchase)  
-					Debug.Log("RestorePurchases continuing: " + result + ". If no further messages, no purchases available to restore.");  
-				});  
-			}  
-			else  
-			{  
-				Debug.Log("RestorePurchases FAIL. Not supported on this platform. Current = " + Application.platform);  
-			}  
+		public void RestorePurchases()
+		{
+			if (!IsInitialized())
+			{
+				Debug.Log("RestorePurchases FAIL. Not initialized.");
+				return;
+			}
+			if (Application.platform == RuntimePlatform.IPhonePlayer ||
+				Application.platform == RuntimePlatform.OSXPlayer)
+			{
+				Debug.Log("RestorePurchases started ...");
+				var apple = m_StoreExtensionProvider.GetExtension<IAppleExtensions>();
+				apple.RestoreTransactions((result) => {
+					//返回一个bool值，如果成功，则会多次调用支付回调，然后根据支付回调中的参数得到商品id，最后做处理(ProcessPurchase)
+					Debug.Log("RestorePurchases continuing: " + result + ". If no further messages, no purchases available to restore.");
+				});
+			}
+			else
+			{
+				Debug.Log("RestorePurchases FAIL. Not supported on this platform. Current = " + Application.platform);
+			}
 		}
 
 		// Example method called when the user presses a 'buy' button
 		// to start the purchase process.
-		public void OnPurchaseClicked(string productId) 
+		public void OnPurchaseClicked(string productId)
 		{
 			//m_StoreController.InitiatePurchase(productId);
 
-			if (IsInitialized())  
-			{  
-				Product product = m_StoreController.products.WithID(productId);  
-				if (product != null && product.availableToPurchase)  
-				{  
-					Debug.Log(string.Format("Purchasing product asychronously: '{0}'", product.definition.id));  
-					m_StoreController.InitiatePurchase(product);  
-				}  
-				else  
-				{  
-					Debug.Log("BuyProductID: FAIL. Not purchasing product, either is not found or is not available for purchase");  
-				}  
-			}  
-			else  
-			{  
-				Debug.Log("BuyProductID FAIL. Not initialized.");  
-			}  
+			if (IsInitialized())
+			{
+				Product product = m_StoreController.products.WithID(productId);
+				if (product != null && product.availableToPurchase)
+				{
+					Debug.Log(string.Format("Purchasing product asychronously: '{0}'", product.definition.id));
+					m_StoreController.InitiatePurchase(product);
+				}
+				else
+				{
+					Debug.Log("BuyProductID: FAIL. Not purchasing product, either is not found or is not available for purchase");
+				}
+			}
+			else
+			{
+				Debug.Log("BuyProductID FAIL. Not initialized.");
+			}
 		}
 
 		/// <summary>
-		/// Called when a purchase fails.
+		/// Called when a purchase fails.支付失败
 		/// </summary>
 		public void OnPurchaseFailed (Product i, PurchaseFailureReason p)
 		{
-			// A product purchase attempt did not succeed. Check failureReason for more detail. Consider sharing 
+			// A product purchase attempt did not succeed. Check failureReason for more detail. Consider sharing
 			// this reason with the user to guide their troubleshooting actions.
 			Debug.Log(string.Format("OnPurchaseFailed: FAIL. Product: '{0}', PurchaseFailureReason: {1}", i.definition.storeSpecificId, p));
 		}
@@ -194,6 +197,7 @@ namespace com.fanxing.Manager
 		/// </summary>
 		public PurchaseProcessingResult ProcessPurchase (PurchaseEventArgs args)
 		{
+			//根据不同商品ID，做对应的处理。
 
 			// A consumable product has been purchased by this user.
 			if (String.Equals(args.purchasedProduct.definition.id, kProductIDConsumable, StringComparison.Ordinal))
@@ -215,14 +219,14 @@ namespace com.fanxing.Manager
 				// TODO: The subscription item has been successfully purchased, grant this to the player.
 			}
 			// Or ... an unknown product has been purchased by this user. Fill in additional products here....
-			else 
+			else
 			{
 				Debug.Log(string.Format("ProcessPurchase: FAIL. Unrecognized product: '{0}'", args.purchasedProduct.definition.id));
 			}
 
-			// Return a flag indicating whether this product has completely been received, or if the application needs 
-			// to be reminded of this purchase at next app launch. Use PurchaseProcessingResult.Pending when still 
-			// saving purchased products to the cloud, and when that save is delayed. 
+			// Return a flag indicating whether this product has completely been received, or if the application needs
+			// to be reminded of this purchase at next app launch. Use PurchaseProcessingResult.Pending when still
+			// saving purchased products to the cloud, and when that save is delayed.
 
 
 
@@ -235,23 +239,23 @@ namespace com.fanxing.Manager
 		}
 
 
-		public void OnConfirmPendingPurchase(string productId) 
+		public void OnConfirmPendingPurchase(string productId)
 		{
 
-			Product product = m_StoreController.products.WithID(productId);  
-			if (product != null && product.availableToPurchase)  
-			{  
-				Debug.Log(string.Format("Purchasing product asychronously: '{0}'", product.definition.id));  
-			
+			Product product = m_StoreController.products.WithID(productId);
+			if (product != null && product.availableToPurchase)
+			{
+				Debug.Log(string.Format("Purchasing product asychronously: '{0}'", product.definition.id));
+
 
 				m_StoreController.ConfirmPendingPurchase (product);
-			}  
-			else  
-			{  
-				Debug.Log("BuyProductID: FAIL. Not purchasing product, either is not found or is not available for purchase");  
-			}  
+			}
+			else
+			{
+				Debug.Log("BuyProductID: FAIL. Not purchasing product, either is not found or is not available for purchase");
+			}
 
-			
+
 		}
 
 
