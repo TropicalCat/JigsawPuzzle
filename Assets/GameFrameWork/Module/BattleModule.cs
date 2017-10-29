@@ -29,6 +29,12 @@ namespace GFW
 			case 9:
 				UIManager.Instance.OpenPage(UIDef.UIBattle9Master);
 				break;
+			case 16:
+				UIManager.Instance.OpenPage(UIDef.UIBattle9Master);
+				break;
+			case 25:
+				UIManager.Instance.OpenPage(UIDef.UIBattle9Master);
+				break;
 			default:
 				break;
 			}

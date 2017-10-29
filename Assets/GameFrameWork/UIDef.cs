@@ -13,6 +13,8 @@ namespace GFW
 
 		public const string UIBattle4Master = "Battle4";
 		public const string UIBattle9Master = "Battle9";
+		public const string UIBattle16Master = "Battle16";
+		public const string UIBattle25Master = "Battle25";
 		public const string UIQuitBattle = "QuitBattle";
 		public const string UIBattleResult = "Result";//结果页
 	}	
