@@ -15,9 +15,6 @@ namespace GFW
 		int m_LastMM = 0;
 		int m_LastSS = 0;
 
-
-
-
 		protected override void Show(object arg)
 		{
 			base.Show (arg);
@@ -30,10 +27,10 @@ namespace GFW
 				UIManager.Instance.OpenPage(UIDef.UIBattle9Master);
 				break;
 			case 16:
-				UIManager.Instance.OpenPage(UIDef.UIBattle9Master);
+				UIManager.Instance.OpenPage(UIDef.UIBattle16Master);
 				break;
 			case 25:
-				UIManager.Instance.OpenPage(UIDef.UIBattle9Master);
+				UIManager.Instance.OpenPage(UIDef.UIBattle25Master);
 				break;
 			default:
 				break;
