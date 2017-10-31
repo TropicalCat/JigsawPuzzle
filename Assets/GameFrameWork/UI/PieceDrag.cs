@@ -24,7 +24,10 @@ public class PieceDrag :MonoBehaviour,
 
 	bool bDown;
 
-
+	bool bScaleup;//放大flag
+	bool bScaledown;//渐渐缩小
+	Vector2 originPos;
+	bool bAutoMove;
 
 	Vector2 targetPos = new Vector3();
 	bool targetOKay  = false;
@@ -44,6 +47,8 @@ public class PieceDrag :MonoBehaviour,
 		targetOKay = false;
 		imgRect.anchoredPosition = new Vector2 (RandomPosX(targetPos.x),   UnityEngine.Random.Range(-600,-800));
 		imgRect.localScale = imgReduceScale;   //缩小图片
+
+		bScaleup = false;
 	}
 	
 	// Update is called once per frame
@@ -59,6 +64,35 @@ public class PieceDrag :MonoBehaviour,
 //				imgRect.anchoredPosition = offset + uguiPos;
 //			}
 //		}
+
+	
+		//渐渐变大
+		if (bScaleup) 
+		{
+			imgRect.localScale = new Vector3(imgRect.localScale.x+0.1f, imgRect.localScale.y+0.1f, 1f);   //放大图片
+			if(imgRect.localScale.x >= 1.0f)
+				bScaleup = false;
+		}
+		//渐渐变小
+		if (bScaledown) 
+		{
+			imgRect.localScale = new Vector3(imgRect.localScale.x-0.1f, imgRect.localScale.y-0.1f, 1f);   //放大图片
+			if(imgRect.localScale.x <= 0.3f)
+				bScaledown = false;
+		}
+
+		//自动移动
+		if (bAutoMove) 
+		{
+			Vector2 dir = (originPos - imgRect.anchoredPosition).normalized;
+			Vector2 nextPos = imgRect.anchoredPosition + dir * 2000f * Time.deltaTime;
+			if (Vector2.Distance (originPos, nextPos) <= 100f) {
+				imgRect.anchoredPosition = originPos;
+				bAutoMove = false;
+			} else {
+				imgRect.anchoredPosition = nextPos;
+			}
+		}
 	}
 
 	//当鼠标按下时调用 接口对应  IPointerDownHandler
@@ -66,7 +100,8 @@ public class PieceDrag :MonoBehaviour,
 	{
 		if (targetOKay)
 			return;
-		imgRect.localScale = imgNormalScale;   //放大图片
+		//imgRect.localScale = imgNormalScale;   //放大图片
+		bScaleup = true;
 		Vector2 mouseDown = eventData.position;    //记录鼠标按下时的屏幕坐标
 		Vector2 mouseUguiPos = new Vector2();   //定义一个接收返回的ugui坐标
 		//RectTransformUtility.ScreenPointToLocalPointInRectangle()：把屏幕坐标转化成ugui坐标
@@ -120,18 +155,18 @@ public class PieceDrag :MonoBehaviour,
 		{
 			imgRect.anchoredPosition = targetPos;
 			targetOKay = true;
-
 			StartCoroutine (DonePiece ());
 		} 
 		else
 		{
 			if (imgRect.anchoredPosition.y >= -600) 
 			{
-				imgRect.anchoredPosition = new Vector2 (RandomPosX(targetPos.x),   UnityEngine.Random.Range(-600,-800));
+				originPos = new Vector2(RandomPosX(targetPos.x),   UnityEngine.Random.Range(-600,-800));
+				bAutoMove = true;
+				//imgRect.anchoredPosition = new Vector2(RandomPosX(targetPos.x),   UnityEngine.Random.Range(-600,-800));
 			}
-
-
-			imgRect.localScale = imgReduceScale;
+			//imgRect.localScale = imgReduceScale;
+			bScaledown = true;
 		}
 
 		AudioManager.Instance.PieceDown ();
