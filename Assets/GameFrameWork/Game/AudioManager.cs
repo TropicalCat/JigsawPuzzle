@@ -15,6 +15,8 @@ namespace GFW
 		AudioClip m_upClip;		//piece抬起
 		AudioClip m_downClip;	//piece放下
 		AudioClip m_goClip;		//游戏开始
+		AudioClip m_clapClip;	//胜利
+
 
 		public AudioManager()
 		{
@@ -86,6 +88,13 @@ namespace GFW
 		public void GameGo()
 		{
 			m_effectAudio.clip = m_goClip;
+			m_effectAudio.Play ();
+		}
+
+		//拼图完成，掌声
+		public void GameSuccess()
+		{
+			m_effectAudio.clip = m_clapClip;
 			m_effectAudio.Play ();
 		}
 

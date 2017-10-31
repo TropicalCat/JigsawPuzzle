@@ -42,7 +42,7 @@ public class PieceDrag :MonoBehaviour,
 		targetPos = imgRect.anchoredPosition;
 
 		targetOKay = false;
-		imgRect.anchoredPosition = new Vector2 (targetPos.x + UnityEngine.Random.Range(-256, 256),   UnityEngine.Random.Range(-600,-800));
+		imgRect.anchoredPosition = new Vector2 (RandomPosX(targetPos.x),   UnityEngine.Random.Range(-600,-800));
 		imgRect.localScale = imgReduceScale;   //缩小图片
 	}
 	
@@ -127,7 +127,7 @@ public class PieceDrag :MonoBehaviour,
 		{
 			if (imgRect.anchoredPosition.y >= -600) 
 			{
-				imgRect.anchoredPosition = new Vector2 (targetPos.x + UnityEngine.Random.Range(-256, 256),   UnityEngine.Random.Range(-600,-800));
+				imgRect.anchoredPosition = new Vector2 (RandomPosX(targetPos.x),   UnityEngine.Random.Range(-600,-800));
 			}
 
 
@@ -178,4 +178,16 @@ public class PieceDrag :MonoBehaviour,
 		yield return new WaitForSeconds (0.5f);
 		PieceManager.Instance.DonePiece ();
 	}
+
+	float RandomPosX(float posX)
+	{
+		if (posX > 0) {
+			return posX + UnityEngine.Random.Range (-300, 0);
+		} else if (posX < 0) {
+			return posX + UnityEngine.Random.Range (0, 300);
+		} else  {
+			return posX + UnityEngine.Random.Range (-300, 300);
+		}
+	}
+
 }

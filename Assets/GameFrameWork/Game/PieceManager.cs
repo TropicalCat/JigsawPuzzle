@@ -126,6 +126,7 @@ namespace GFW
 			{
 				//胜利
 				ModuleManager.Instance.ShowModule(ModuleDef.BattleResultModule, null);
+				AudioManager.Instance.GameSuccess ();
 			}	
 		}
 			

@@ -47,7 +47,6 @@ namespace GFW
 			ModuleManager.Instance.ShowModule(ModuleDef.QuitBattleModule);
 		}
 
-
 		public void CalculateTime()
 		{
 			m_BattleLastTime += Time.deltaTime;
