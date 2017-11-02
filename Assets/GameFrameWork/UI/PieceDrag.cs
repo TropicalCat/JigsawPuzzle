@@ -29,6 +29,9 @@ public class PieceDrag :MonoBehaviour,
 	Vector2 originPos;
 	bool bAutoMove;
 
+
+	int mAngle;
+
 	Vector2 targetPos = new Vector3();
 	bool targetOKay  = false;
 
@@ -49,6 +52,17 @@ public class PieceDrag :MonoBehaviour,
 		imgRect.localScale = imgReduceScale;   //缩小图片
 
 		bScaleup = false;
+
+
+		mAngle = 0;
+		if (PieceManager.Instance.Revolve) 
+		{
+			int rand = UnityEngine.Random.Range (1, 3);
+			mAngle = rand * 90;
+			transform.Rotate (new Vector3(0f, 0f, mAngle));
+		}
+
+
 	}
 	
 	// Update is called once per frame
@@ -98,8 +112,18 @@ public class PieceDrag :MonoBehaviour,
 	//当鼠标按下时调用 接口对应  IPointerDownHandler
 	public void OnPointerDown(PointerEventData eventData)
 	{
-		if (targetOKay)
+
+		if (targetOKay) 
+		{
+			//缩放复位	
+			if (mAngle > 0) 
+			{
+				mAngle -= 90;
+				transform.Rotate (new Vector3(0f, 0f, -90));
+			}
 			return;
+		}
+
 		//imgRect.localScale = imgNormalScale;   //放大图片
 		bScaleup = true;
 		Vector2 mouseDown = eventData.position;    //记录鼠标按下时的屏幕坐标
@@ -114,8 +138,6 @@ public class PieceDrag :MonoBehaviour,
 		{
 			//计算图片中心和鼠标点的差值
 			offset = imgRect.anchoredPosition - mouseUguiPos;
-
-			//imgRect.transform.
 
 			imgRect.transform.SetSiblingIndex(100);
 		}
@@ -145,13 +167,26 @@ public class PieceDrag :MonoBehaviour,
 	{
 		if (targetOKay)
 			return;
+
+
+
+
 		offset = Vector2.zero;
 		bDown = false;
 		//imgRect.localScale = imgNormalScale;   //回复图片
 
 		Vector2 curPos = imgRect.anchoredPosition;
-		curPos = (targetPos - curPos);
-		if (Math.Abs (curPos.x) <= 32f || Math.Abs (curPos.y) <= 32f) 
+		//curPos = (targetPos - curPos);
+
+		Vector2 size = imgRect.sizeDelta;
+
+		float mag = size.sqrMagnitude;
+		//size.sqrMagnitude
+
+
+		float dis = Vector2.Distance (targetPos , curPos);
+
+		if (  dis <= 100f) //Math.Abs (curPos.x) <= 32f || Math.Abs (curPos.y) <= 32f) 
 		{
 			imgRect.anchoredPosition = targetPos;
 			targetOKay = true;
@@ -224,5 +259,11 @@ public class PieceDrag :MonoBehaviour,
 			return posX + UnityEngine.Random.Range (-300, 300);
 		}
 	}
+
+
+
+
+
+
 
 }
