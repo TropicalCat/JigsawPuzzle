@@ -15,8 +15,6 @@ namespace GFW
 		[SerializeField]
 		private Button m_btnQuit;
 
-
-
 		Image m_image_H;
 		Image m_image_h;
 		Image m_image_M;
@@ -48,6 +46,9 @@ namespace GFW
 			m_image_m = gameObject.transform.Find ("Time/m").GetComponent<Image>();
 			m_image_S = gameObject.transform.Find ("Time/S").GetComponent<Image>();
 			m_image_s = gameObject.transform.Find ("Time/s").GetComponent<Image>();
+
+
+			gameObject.transform.Find ("EffectStar").GetComponent<Animator> ().Play ("Stop");
 		}
 
 		protected override void OnClose(object arg = null)
@@ -90,7 +91,6 @@ namespace GFW
 			{
 				module.CalculateTime();
 
-
 				int hh = module.GetHH ();
 				m_image_H.sprite = AssetManager.Instance.GetNumberSprite ("Number"+ (hh/10));
 				m_image_h.sprite = AssetManager.Instance.GetNumberSprite ("Number"+ (hh%10));
@@ -100,13 +100,9 @@ namespace GFW
 				int ss = module.GetSS ();
 				m_image_S.sprite = AssetManager.Instance.GetNumberSprite ("Number"+ (ss/10));
 				m_image_s.sprite = AssetManager.Instance.GetNumberSprite ("Number"+ (ss%10));
-
-
 			}
 		}
-
-
-
+			
 		private void OnArtist()
 		{
 			GameObject obj = gameObject.transform.Find ("PieceZone").gameObject;

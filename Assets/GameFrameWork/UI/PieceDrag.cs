@@ -190,6 +190,13 @@ public class PieceDrag :MonoBehaviour,
 		{
 			imgRect.anchoredPosition = targetPos;
 			targetOKay = true;
+
+			GameObject effObj = gameObject.transform.parent.Find ("EffectStar").gameObject;
+			effObj.transform.localPosition = imgRect.anchoredPosition3D;
+			Animator ani = effObj.GetComponent<Animator>();
+			ani.SetTrigger("again");
+
+
 			StartCoroutine (DonePiece ());
 		} 
 		else
@@ -198,6 +205,10 @@ public class PieceDrag :MonoBehaviour,
 			{
 				originPos = new Vector2(RandomPosX(targetPos.x),   UnityEngine.Random.Range(-600,-800));
 				bAutoMove = true;
+
+
+
+
 				//imgRect.anchoredPosition = new Vector2(RandomPosX(targetPos.x),   UnityEngine.Random.Range(-600,-800));
 			}
 			//imgRect.localScale = imgReduceScale;

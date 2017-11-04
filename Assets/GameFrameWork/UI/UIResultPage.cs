@@ -19,6 +19,9 @@ namespace GFW
 		[SerializeField]
 		private Button m_btnHome;
 
+		[SerializeField]
+		private GameObject m_aniSparkle;
+
 		protected override void OnOpen(object arg = null)
 		{
 			base.OnOpen (arg);
@@ -37,6 +40,14 @@ namespace GFW
 			}
 
 			initPiece ();
+
+			//Animator ani = m_aniSparkle.GetComponent<Animator> ();
+
+
+			//ani.Play ("Stop");
+
+
+
 		}
 
 		void initPiece()
