@@ -22,8 +22,6 @@ public class PieceDrag :MonoBehaviour,
 	Vector3 imgReduceScale = new Vector3(0.3f, 0.3f, 1);   //设置图片缩放
 	Vector3 imgNormalScale = new Vector3(1, 1, 1);   //正常大小
 
-	bool bDown;
-
 	bool bScaleup;//放大flag
 	bool bScaledown;//渐渐缩小
 	Vector2 originPos;
@@ -53,7 +51,6 @@ public class PieceDrag :MonoBehaviour,
 
 		bScaleup = false;
 
-
 		mAngle = 0;
 		if (PieceManager.Instance.Revolve) 
 		{
@@ -68,31 +65,24 @@ public class PieceDrag :MonoBehaviour,
 	// Update is called once per frame
 	void Update () 
 	{
-//		if (bDown) 
-//		{
-//
-//			Vector2 uguiPos = new Vector2();
-//			bool isRect = RectTransformUtility.ScreenPointToLocalPointInRectangle (canvas, Input.mousePosition, canvas.GetComponent<Canvas> ().worldCamera, out uguiPos);
-//			if(isRect)
-//			{
-//				imgRect.anchoredPosition = offset + uguiPos;
-//			}
-//		}
-
-	
 		//渐渐变大
 		if (bScaleup) 
 		{
 			imgRect.localScale = new Vector3(imgRect.localScale.x+0.1f, imgRect.localScale.y+0.1f, 1f);   //放大图片
-			if(imgRect.localScale.x >= 1.0f)
+			if (imgRect.localScale.x >= 1.0f) {
+				imgRect.localScale = imgNormalScale;
 				bScaleup = false;
+			}
 		}
 		//渐渐变小
-		if (bScaledown) 
+		else if (bScaledown) 
 		{
-			imgRect.localScale = new Vector3(imgRect.localScale.x-0.1f, imgRect.localScale.y-0.1f, 1f);   //放大图片
-			if(imgRect.localScale.x <= 0.3f)
+			imgRect.localScale = new Vector3(imgRect.localScale.x-0.1f, imgRect.localScale.y-0.1f, 1f);   //缩小图片
+			if (imgRect.localScale.x <= 0.3f) {
+				imgRect.localScale = imgReduceScale;
 				bScaledown = false;
+			}
+				
 		}
 
 		//自动移动
@@ -112,7 +102,6 @@ public class PieceDrag :MonoBehaviour,
 	//当鼠标按下时调用 接口对应  IPointerDownHandler
 	public void OnPointerDown(PointerEventData eventData)
 	{
-
 		if (targetOKay) 
 		{
 			//缩放复位	
@@ -120,6 +109,7 @@ public class PieceDrag :MonoBehaviour,
 			{
 				mAngle -= 90;
 				transform.Rotate (new Vector3(0f, 0f, -90));
+				StartCoroutine (DonePiece ());
 			}
 			return;
 		}
@@ -141,7 +131,6 @@ public class PieceDrag :MonoBehaviour,
 
 			imgRect.transform.SetSiblingIndex(100);
 		}
-		bDown = true;
 
 		AudioManager.Instance.PieceUp ();
 	}
@@ -168,11 +157,8 @@ public class PieceDrag :MonoBehaviour,
 		if (targetOKay)
 			return;
 
-
-
-
 		offset = Vector2.zero;
-		bDown = false;
+
 		//imgRect.localScale = imgNormalScale;   //回复图片
 
 		Vector2 curPos = imgRect.anchoredPosition;
@@ -180,22 +166,17 @@ public class PieceDrag :MonoBehaviour,
 
 		Vector2 size = imgRect.sizeDelta;
 
-		float mag = size.sqrMagnitude;
-		//size.sqrMagnitude
+
+		double radius = Math.Sqrt(size.x * size.x + size.y * size.y);
+
 
 
 		float dis = Vector2.Distance (targetPos , curPos);
 
-		if (  dis <= 100f) //Math.Abs (curPos.x) <= 32f || Math.Abs (curPos.y) <= 32f) 
+		if (  dis <= radius/4f) //Math.Abs (curPos.x) <= 32f || Math.Abs (curPos.y) <= 32f) 
 		{
 			imgRect.anchoredPosition = targetPos;
 			targetOKay = true;
-
-			GameObject effObj = gameObject.transform.parent.Find ("EffectStar").gameObject;
-			effObj.transform.localPosition = imgRect.anchoredPosition3D;
-			Animator ani = effObj.GetComponent<Animator>();
-			ani.SetTrigger("again");
-
 
 			StartCoroutine (DonePiece ());
 		} 
@@ -205,10 +186,6 @@ public class PieceDrag :MonoBehaviour,
 			{
 				originPos = new Vector2(RandomPosX(targetPos.x),   UnityEngine.Random.Range(-600,-800));
 				bAutoMove = true;
-
-
-
-
 				//imgRect.anchoredPosition = new Vector2(RandomPosX(targetPos.x),   UnityEngine.Random.Range(-600,-800));
 			}
 			//imgRect.localScale = imgReduceScale;
@@ -256,8 +233,19 @@ public class PieceDrag :MonoBehaviour,
 
 	IEnumerator DonePiece()
 	{
+		if (mAngle == 0) 
+		{
+			GameObject effObj = gameObject.transform.parent.Find ("EffectStar").gameObject;
+			effObj.transform.localPosition = imgRect.anchoredPosition3D;
+			Animator ani = effObj.GetComponent<Animator>();
+			ani.SetTrigger("again");
+		}
+
 		yield return new WaitForSeconds (0.5f);
-		PieceManager.Instance.DonePiece ();
+		if (mAngle == 0) 
+		{
+			PieceManager.Instance.DonePiece ();
+		}
 	}
 
 	float RandomPosX(float posX)
