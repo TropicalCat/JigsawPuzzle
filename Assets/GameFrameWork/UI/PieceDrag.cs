@@ -47,7 +47,7 @@ public class PieceDrag :MonoBehaviour,
 
 		targetOKay = false;
 		imgRect.anchoredPosition = new Vector2 (RandomPosX(targetPos.x),   UnityEngine.Random.Range(-600,-800));
-		imgRect.localScale = imgReduceScale;   //缩小图片
+		//imgRect.localScale = imgReduceScale;   //缩小图片
 
 		bScaleup = false;
 
@@ -58,6 +58,26 @@ public class PieceDrag :MonoBehaviour,
 			mAngle = rand * 90;
 			transform.Rotate (new Vector3(0f, 0f, mAngle));
 		}
+
+
+		int count = PieceManager.Instance.PieceCount;
+		if (count == 4) {
+			imgReduceScale = new Vector3(0.3f, 0.3f, 1);
+		}
+		else if(count == 9)
+		{
+			imgReduceScale = new Vector3(0.5f, 0.5f, 1);
+		}
+		else if(count == 16)
+		{
+			imgReduceScale = new Vector3(0.7f, 0.7f, 1);
+		}
+		else if(count == 25)
+		{
+			imgReduceScale = new Vector3(0.9f, 0.9f, 1);
+		}
+
+		imgRect.localScale = imgReduceScale;   //缩小图片
 
 
 	}
@@ -78,7 +98,7 @@ public class PieceDrag :MonoBehaviour,
 		else if (bScaledown) 
 		{
 			imgRect.localScale = new Vector3(imgRect.localScale.x-0.1f, imgRect.localScale.y-0.1f, 1f);   //缩小图片
-			if (imgRect.localScale.x <= 0.3f) {
+			if (imgRect.localScale.x <= imgReduceScale.x) {
 				imgRect.localScale = imgReduceScale;
 				bScaledown = false;
 			}
