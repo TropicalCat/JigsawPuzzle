@@ -26,6 +26,7 @@ public class PieceDrag :MonoBehaviour,
 	bool bScaledown;//渐渐缩小
 	Vector2 originPos;
 	bool bAutoMove;
+	bool bDone = false;
 
 
 	int mAngle;
@@ -264,7 +265,11 @@ public class PieceDrag :MonoBehaviour,
 		yield return new WaitForSeconds (0.5f);
 		if (mAngle == 0) 
 		{
-			PieceManager.Instance.DonePiece ();
+			if (!bDone) {
+				PieceManager.Instance.DonePiece ();
+				bDone = true;
+			}
+
 		}
 	}
 

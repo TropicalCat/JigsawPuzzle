@@ -34,6 +34,7 @@ namespace GFW
 			m_upClip = Resources.Load("Audio/Up") as AudioClip;
 			m_downClip = Resources.Load("Audio/Down") as AudioClip;
 			m_goClip = Resources.Load("Audio/Go") as AudioClip;
+			m_clapClip = Resources.Load ("Audio/Clap") as AudioClip;
 		}
 
 		public void Destory()
