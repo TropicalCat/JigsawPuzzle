@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using GE;
 using GFW;
+using UnityEngine.Analytics;
+using UnityEngine.Advertisements;
 
 public class GameMain : MonoBehaviour 
 {
@@ -15,6 +17,14 @@ public class GameMain : MonoBehaviour
 		InitBusiness ();
 
 		ModuleManager.Instance.ShowModule (ModuleDef.HomeModule);
+	
+	
+	
+		//Analytics.SetUserId
+		Advertisement.Show();
+
+
+	
 	}
 	
 	// Update is called once per frame
