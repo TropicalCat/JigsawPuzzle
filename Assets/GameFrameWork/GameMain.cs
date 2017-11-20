@@ -17,14 +17,6 @@ public class GameMain : MonoBehaviour
 		InitBusiness ();
 
 		ModuleManager.Instance.ShowModule (ModuleDef.HomeModule);
-	
-	
-	
-		//Analytics.SetUserId
-		Advertisement.Show();
-
-
-	
 	}
 	
 	// Update is called once per frame
@@ -40,6 +32,7 @@ public class GameMain : MonoBehaviour
 		GameManager.Instance.Init ();
 		PieceManager.Instance.Init ();
 		AudioManager.Instance.Init ();
+		AdsManager.Instance.Init ();
 	}
 
 	private void InitBusiness()

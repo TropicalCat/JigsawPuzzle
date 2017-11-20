@@ -43,6 +43,7 @@ namespace GE
         protected virtual void OnOpen(object arg = null)
         {
             this.Log("OnOpen() ");
+			GFW.AdsManager.Instance.ShowAd ();
         }
     }
 }
