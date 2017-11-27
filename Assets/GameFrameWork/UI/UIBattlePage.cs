@@ -49,6 +49,9 @@ namespace GFW
 
 
 			gameObject.transform.Find ("EffectStar").GetComponent<Animator> ().Play ("Stop");
+
+			//ads
+			GFW.AdsManager.Instance.RemoveBanner ();
 		}
 
 		protected override void OnClose(object arg = null)

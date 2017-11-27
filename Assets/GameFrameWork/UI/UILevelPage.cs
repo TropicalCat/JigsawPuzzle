@@ -22,6 +22,9 @@ namespace GFW
 				m_btnBack.onClick.AddListener(OnBack);
 			}
 			initLevel ();
+
+			//ads
+			GFW.AdsManager.Instance.ShowBanner ();
 		}
 
 		private void initLevel()

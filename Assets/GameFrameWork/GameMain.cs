@@ -4,7 +4,7 @@ using UnityEngine;
 using GE;
 using GFW;
 using UnityEngine.Analytics;
-using UnityEngine.Advertisements;
+//using UnityEngine.Advertisements;
 
 public class GameMain : MonoBehaviour 
 {

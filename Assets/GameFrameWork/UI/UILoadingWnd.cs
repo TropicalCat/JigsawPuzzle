@@ -14,6 +14,16 @@ namespace GFW
 		{
 			base.OnOpen (arg);
 
+
+
+			//ads
+			//GFW.AdsManager.Instance.ShowInterstitial ();
+
+
+			//ads
+			GFW.AdsManager.Instance.ShowBannerABS (70, 1300);
+
+
 			StartCoroutine (Loading());
 		}
 
@@ -26,6 +36,7 @@ namespace GFW
 		protected override void OnClose(object arg = null)
 		{
 			base.OnClose (arg);
+			GFW.AdsManager.Instance.RemoveBanner();
 		}
 
 		private void LoadFinish()

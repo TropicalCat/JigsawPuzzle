@@ -19,6 +19,7 @@ namespace GFW
 			{
 				m_btnStart.onClick.AddListener(OnStart);
 			}
+			GFW.AdsManager.Instance.RemoveBanner ();
 		}
 
 		protected override void OnClose(object arg = null)
@@ -38,6 +39,7 @@ namespace GFW
 				module.OpenModule(ModuleDef.LevelModule, null);
 			}	
 			AudioManager.Instance.PlayClick ();
+			//GFW.AdsManager.Instance.ShowBanner ();
 		}
 			
 

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using GE;
-using UnityEngine.Advertisements;
+//using UnityEngine.Advertisements;
 
 
 namespace GFW
@@ -13,17 +13,21 @@ namespace GFW
 		string gpGameID = "1598965";
 		string iosGameID = "1598966";
 
+		AdmobManager m_admobMgr;
+
 		public AdsManager()
 		{
+			m_admobMgr = new AdmobManager ();
 		}
 
 		public void Init()
 		{
-
-			if (Advertisement.isSupported) 
+			//if (Advertisement.isSupported) 
 			{
-				Advertisement.Initialize (gpGameID, true);
+			//	Advertisement.Initialize (gpGameID, true);
 			}
+
+			m_admobMgr.Init ();
 
 		}
 
@@ -35,43 +39,62 @@ namespace GFW
 		{
 		}
 
-		public bool AdsIsReady()
+//		public bool AdsIsReady()
+//		{
+//			return Advertisement.IsReady();
+//		}
+//			
+//		public void ShowAd()
+//		{
+//
+//			if (Advertisement.IsReady ())
+//				Advertisement.Show ();
+//
+//			return;
+//
+//
+//			if(Advertisement.IsReady("rewardedVideo")) {
+//				var options = new ShowOptions();
+//				options.resultCallback = HandleShowResult;
+//				Advertisement.Show("rewardedVideo", options);
+//			}else{
+//				Debug.Log("Rewarded Video not available");
+//			}
+//		}
+//
+//		//HandleShowResult will be called when the ad stops playing, and pass the result enumerator
+//		void HandleShowResult (ShowResult result)
+//		{
+//			if(result == ShowResult.Finished) {
+//				Debug.Log("Video completed - Offer a reward to the player");
+//
+//			}else if(result == ShowResult.Skipped) {
+//				Debug.LogWarning("Video was skipped - Do NOT reward the player");
+//
+//			}else if(result == ShowResult.Failed) {
+//				Debug.LogError("Video failed to show");
+//			}
+//		}
+
+
+		public void ShowBanner()
 		{
-			return Advertisement.IsReady();
+			m_admobMgr.ShowBanner ();
 		}
 
-
-
-		public void ShowAd()
+		public void RemoveBanner()
 		{
-
-			if (Advertisement.IsReady ())
-				Advertisement.Show ();
-
-			return;
-
-
-			if(Advertisement.IsReady("rewardedVideo")) {
-				var options = new ShowOptions();
-				options.resultCallback = HandleShowResult;
-				Advertisement.Show("rewardedVideo", options);
-			}else{
-				Debug.Log("Rewarded Video not available");
-			}
+			m_admobMgr.RemoveBanner ();
 		}
 
-		//HandleShowResult will be called when the ad stops playing, and pass the result enumerator
-		void HandleShowResult (ShowResult result)
+		public void ShowBannerABS(int x, int y)
 		{
-			if(result == ShowResult.Finished) {
-				Debug.Log("Video completed - Offer a reward to the player");
+			m_admobMgr.ShowBannerABS (x, y);
+		}
 
-			}else if(result == ShowResult.Skipped) {
-				Debug.LogWarning("Video was skipped - Do NOT reward the player");
-
-			}else if(result == ShowResult.Failed) {
-				Debug.LogError("Video failed to show");
-			}
+		public void ShowInterstitial()
+		{
+			m_admobMgr.ShowInterstitial ();
 		}
 
 

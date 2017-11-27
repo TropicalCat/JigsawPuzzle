@@ -60,6 +60,9 @@ namespace GFW
 			pieceCount ();
 			normalIcon ();
 			revolveIcon ();
+
+			//ads
+			GFW.AdsManager.Instance.ShowBanner ();
 		}
 
 

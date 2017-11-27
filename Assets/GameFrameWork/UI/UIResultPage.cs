@@ -41,15 +41,8 @@ namespace GFW
 
 			initPiece ();
 
-			//Animator ani = m_aniSparkle.GetComponent<Animator> ();
-
-
-			//ani.Play ("Stop");
-
-
-
-
-
+			//ads
+			GFW.AdsManager.Instance.ShowBannerABS (70, 1150);
 		}
 
 		void initPiece()
@@ -80,6 +73,7 @@ namespace GFW
 			base.OnClose (arg);
 			//销毁掉窗口
 			Destroy (gameObject);
+			AdsManager.Instance.RemoveBanner ();
 		}
 
 		private void OnRestart()

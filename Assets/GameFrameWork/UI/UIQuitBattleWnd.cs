@@ -26,6 +26,9 @@ namespace GFW
 			}
 
 			initRandomLevel ();
+
+			//ads
+			GFW.AdsManager.Instance.ShowBannerABS (70, 1300);
 		}
 
 		void initRandomLevel()
@@ -58,6 +61,9 @@ namespace GFW
 			}
 
 			base.OnClose (arg);
+
+			//ads
+			GFW.AdsManager.Instance.RemoveBanner ();
 		}
 
 
